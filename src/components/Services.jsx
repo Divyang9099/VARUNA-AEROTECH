@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { siteConfig } from '../siteConfig';
@@ -7,7 +7,15 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const Services = () => {
     const [startIndex, setStartIndex] = useState(0);
     const [direction, setDirection] = useState(0);
-    const itemsPerPage = 3;
+    const [itemsPerPage, setItemsPerPage] = useState(window.innerWidth < 768 ? 1 : 3);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setItemsPerPage(window.innerWidth < 768 ? 1 : 3);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const nextSlide = () => {
         setDirection(1);
@@ -15,9 +23,11 @@ const Services = () => {
             const total = siteConfig.services.length;
             const nextStep = prev + itemsPerPage;
             if (nextStep >= total) return 0;
-            if (total - nextStep < itemsPerPage) {
+            // Ensure we don't show empty slots at the end (for desktop mainly)
+            if (total - nextStep < itemsPerPage && itemsPerPage > 1) {
                 return total - itemsPerPage;
             }
+            // For single item view, simple clamp is fine or loop back which line 21 does.
             return nextStep;
         });
     };
@@ -26,18 +36,12 @@ const Services = () => {
         setDirection(-1);
         setStartIndex((prev) => {
             const total = siteConfig.services.length;
-            // If currently at 0, wrap to the "last full page" (total - itemsPerPage)
-            if (prev === 0) return total - itemsPerPage;
-
-            // Standard move back
+            if (prev === 0) {
+                if (itemsPerPage === 1) return total - 1;
+                return total - itemsPerPage;
+            }
             const nextStep = prev - itemsPerPage;
-
-            // If we go below 0 (shouldn't happen with the logic above unless strictly following pages)
-            // or if we are at an offset that doesn't align with page start (e.g. 7), 
-            // we probably want to align back to grid? 
-            // Actually, simplest is:
-            if (nextStep < 0) return total - itemsPerPage; // Loop behavior if needed
-
+            if (nextStep < 0) return total - itemsPerPage;
             return Math.max(0, nextStep);
         });
     };
@@ -54,30 +58,30 @@ const Services = () => {
                     </p>
                 </div>
 
-                <div className="relative">
+                <div className="relative max-w-sm md:max-w-none mx-auto">
                     {/* Navigation Buttons */}
                     <button
                         onClick={prevSlide}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-slate-100 flex items-center justify-center text-slate-600 hover:text-blue-600 hover:border-blue-600 transition-all hidden md:flex"
+                        className="absolute -left-3 md:-left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg border border-slate-100 flex items-center justify-center text-slate-600 hover:text-blue-600 hover:border-blue-600 transition-all opacity-90 hover:opacity-100"
                     >
-                        <ChevronLeft className="w-6 h-6" />
+                        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
                     </button>
 
                     <button
                         onClick={nextSlide}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-slate-100 flex items-center justify-center text-slate-600 hover:text-blue-600 hover:border-blue-600 transition-all hidden md:flex"
+                        className="absolute -right-3 md:-right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg border border-slate-100 flex items-center justify-center text-slate-600 hover:text-blue-600 hover:border-blue-600 transition-all opacity-90 hover:opacity-100"
                     >
-                        <ChevronRight className="w-6 h-6" />
+                        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                     </button>
 
-                    <div className="overflow-hidden px-4 py-8 -mx-4">
+                    <div className="overflow-hidden px-1 md:px-4 py-8 md:-mx-4">
                         <AnimatePresence initial={false} mode="wait" custom={direction}>
                             <motion.div
                                 key={startIndex}
                                 custom={direction}
                                 variants={{
                                     enter: (direction) => ({
-                                        x: direction > 0 ? 1000 : -1000,
+                                        x: direction > 0 ? 200 : -200,
                                         opacity: 0
                                     }),
                                     center: {
@@ -87,7 +91,7 @@ const Services = () => {
                                     },
                                     exit: (direction) => ({
                                         zIndex: 0,
-                                        x: direction < 0 ? 1000 : -1000,
+                                        x: direction < 0 ? 200 : -200,
                                         opacity: 0
                                     })
                                 }}
@@ -95,7 +99,7 @@ const Services = () => {
                                 animate="center"
                                 exit="exit"
                                 transition={{
-                                    x: { type: "tween", ease: "easeInOut", duration: 0.4 },
+                                    x: { type: "spring", stiffness: 300, damping: 30 },
                                     opacity: { duration: 0.2 }
                                 }}
                                 className="flex flex-col md:flex-row justify-center items-center gap-4"
@@ -103,9 +107,9 @@ const Services = () => {
                                 {visibleServices.map((service, index) => (
                                     <div
                                         key={index}
-                                        className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 group h-full flex flex-col max-w-xs border border-slate-100"
+                                        className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 group h-full flex flex-col w-full md:max-w-xs border border-slate-100"
                                     >
-                                        <div className="relative h-48 overflow-hidden">
+                                        <div className="relative h-64 md:h-48 overflow-hidden">
                                             <img
                                                 src={service.image}
                                                 alt={service.title}
@@ -134,8 +138,8 @@ const Services = () => {
                         </AnimatePresence>
                     </div>
 
-                    {/* Mobile Navigation Dots */}
-                    <div className="flex justify-center gap-2 mt-8 md:hidden">
+                    {/* Mobile Navigation Dots - Still useful for context even with arrows */}
+                    <div className="flex justify-center gap-2 mt-4 md:hidden">
                         {Array.from({ length: Math.ceil(siteConfig.services.length / itemsPerPage) }).map((_, idx) => (
                             <button
                                 key={idx}
@@ -149,5 +153,4 @@ const Services = () => {
         </section >
     );
 };
-
 export default Services;
