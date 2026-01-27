@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { siteConfig } from '../siteConfig';
 import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
 
@@ -39,9 +40,9 @@ const Footer = () => (
                     <ul className="space-y-3">
                         {siteConfig.quickLinks.map((item, index) => (
                             <li key={index}>
-                                <a href={item.href} className="text-blue-100 hover:text-white hover:pl-1 transition-all duration-200 block text-sm">
+                                <Link to={item.href} className="text-blue-100 hover:text-white hover:pl-1 transition-all duration-200 block text-sm">
                                     {item.label}
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
@@ -51,13 +52,20 @@ const Footer = () => (
                 <div>
                     <h4 className="text-lg font-bold text-white mb-6">Services</h4>
                     <ul className="space-y-3">
-                        {siteConfig.footerServices.map((item, index) => (
-                            <li key={index}>
-                                <a href="#" className="text-blue-100 hover:text-white hover:pl-1 transition-all duration-200 block text-sm">
-                                    {item}
-                                </a>
-                            </li>
-                        ))}
+                        {siteConfig.footerServices.map((title, index) => {
+                            // Find the service ID based on the title match from siteConfig.services
+                            // This ensures we link correctly to the dynamic detail page
+                            const service = siteConfig.services.find(s => s.title === title);
+                            const linkTo = service ? `/services/${service.id}` : "/#services";
+
+                            return (
+                                <li key={index}>
+                                    <Link to={linkTo} className="text-blue-100 hover:text-white hover:pl-1 transition-all duration-200 block text-sm">
+                                        {title}
+                                    </Link>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
 
