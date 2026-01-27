@@ -1,5 +1,13 @@
 import { Camera, Shield, Zap, BarChart3, Globe, Cpu, Wind, Activity, Eye, FileText, Map, Settings, CheckCircle, Users, Layers, Award, FileCheck } from "lucide-react";
 import pipelineImg from './assets/pipeline_inspection_drone.png';
+import solarImg from './assets/solar_panel_inspection_drone.png';
+import windImg from './assets/windmill_inspection_drone.png';
+import powerlineImg from './assets/powerline_inspection_drone.png';
+import infrastructureImg from './assets/infrastructure_monitoring_drone.png';
+import surveillanceImg from './assets/surveillance_drone.png';
+import utilityImg from './assets/industrial_utility_drone.png';
+import inventoryImg from './assets/inventory_management_drone.png';
+import topoImg from './assets/topographic_survey_drone.png';
 
 export const siteConfig = {
     name: "VARUNA AEROTECH",
@@ -136,11 +144,11 @@ export const siteConfig = {
             id: "solar-panel-inspection",
             title: "Solar Panel Inspection",
             description: "Maximize energy yield with IEC-compliant thermal inspections.",
-            image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop",
+            image: solarImg,
             overview: {
                 title: "Solar Thermography Overview",
                 content: "Drone Thermography employs UAV-mounted, high-resolution infrared sensors to perform rapid, non-invasive surveys of the entire PV array. By capturing precise thermal data under stable irradiance conditions, we detect and map temperature anomalies—such as hotspots, bypass-diode failures, string imbalances, and cell-level defects—before they adversely impact energy yield or escalate into safety hazards.",
-                image: "https://images.unsplash.com/photo-1579829366248-204fe8413f31?q=80&w=2070&auto=format&fit=crop"
+                image: solarImg
             },
             benefits: [
                 { title: "Precise Fault Mapping", description: "Pinpoint thermal anomalies with centimeter-level accuracy." },
@@ -167,11 +175,11 @@ export const siteConfig = {
             id: "windmill-inspection",
             title: "Windmill Inspection",
             description: "Comprehensive blade and tower inspections using autonomous drones.",
-            image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=2070&auto=format&fit=crop",
+            image: windImg,
             overview: {
                 title: "Wind Turbine Inspection Overview",
                 content: "Our autonomous drone inspections capture high-resolution imagery of wind turbine blades, nacelles, and towers. We identify cracks, erosion, lightning strikes, and composite delamination with millimeter precision, enabling preventative maintenance and maximizing turbine uptime.",
-                image: "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=2070&auto=format&fit=crop"
+                image: windImg
             },
             benefits: [
                 { title: "Millimeter Precision", description: "Detect hairline cracks and early signs of erosion." },
@@ -198,11 +206,11 @@ export const siteConfig = {
             id: "powerline-inspection",
             title: "Powerline Inspection",
             description: "Secure the grid with rapid corridor mapping and corona detection.",
-            image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop",
+            image: powerlineImg,
             overview: {
                 title: "Transmission Line Overview",
                 content: "We provide comprehensive monitoring for transmission and distribution lines. Our sensors detect corona discharges, identify vegetation encroachment, and inspect insulator health, helping utilities prevent outages and ensure grid reliability.",
-                image: "https://images.unsplash.com/photo-1621360841012-6368d601b80d?q=80&w=2070&auto=format&fit=crop"
+                image: powerlineImg
             },
             benefits: [
                 { title: "Corona Detection", description: "Identify invisible electrical discharges/faults." },
@@ -260,11 +268,11 @@ export const siteConfig = {
             id: "infrastructure-monitoring",
             title: "Infrastructure Monitoring",
             description: "Assess the structural health of bridges, dams, and roads.",
-            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+            image: infrastructureImg,
             overview: {
                 title: "Structural Health Overview",
                 content: "We provide detailed visual and thermal inspections of critical infrastructure like bridges, dams, and telecommunication towers. Our data helps engineers identify spalling, corrosion, stress cracks, and other structural defects without expensive scaffolding.",
-                image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=2070&auto=format&fit=crop"
+                image: infrastructureImg
             },
             benefits: [
                 { title: "Remote Access", description: "Reach hard-to-access areas safely." },
@@ -291,11 +299,11 @@ export const siteConfig = {
             id: "surveillance",
             title: "Surveillance",
             description: "Aerial security and perimeter monitoring for critical assets.",
-            image: "https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?q=80&w=2069&auto=format&fit=crop",
+            image: surveillanceImg,
             overview: {
                 title: "Aerial Surveillance Overview",
                 content: "Our surveillance drones provide real-time aerial situational awareness for large industrial plants, construction sites, and event venues. We offer active monitoring to deter intrusion, document progress, and ensure site safety compliance.",
-                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop"
+                image: surveillanceImg
             },
             benefits: [
                 { title: "Live Streaming", description: "Low-latency video feed to command centers." },
@@ -322,11 +330,11 @@ export const siteConfig = {
             id: "industrial-utility-inspection",
             title: "Industrial Utility Inspection",
             description: "Detailed thermal and visual inspection of factory utilities.",
-            image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop",
+            image: utilityImg,
             overview: {
                 title: "Industrial Utility Overview",
                 content: "Factories and refineries rely on complex utility networks. We inspect flare stacks, cooling towers, chimneys, and external piping for thermal leaks, insulation failure, and structural integrity, ensuring operational efficiency and safety.",
-                image: "https://images.unsplash.com/photo-1565193566173-034e460366b8?q=80&w=2070&auto=format&fit=crop"
+                image: utilityImg
             },
             benefits: [
                 { title: "Online Inspection", description: "No need for plant shutdown during inspection." },
@@ -353,11 +361,11 @@ export const siteConfig = {
             id: "inventory-management",
             title: "Inventory Management",
             description: "Volumetric measurements for stockpiles and quarries.",
-            image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
+            image: inventoryImg,
             overview: {
                 title: "Stockpile Volumetrics Overview",
                 content: "Accurately measuring large stockpiles of coal, aggregate, or minerals is time-consuming manually. Our drone photogrammetry generates precise 3D volumetric data in minutes, providing accurate inventory audits and reconciliation.",
-                image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format&fit=crop"
+                image: inventoryImg
             },
             benefits: [
                 { title: "99% Accuracy", description: "Survey-grade accuracy comparable to LiDAR." },
@@ -384,11 +392,11 @@ export const siteConfig = {
             id: "topographic-survey",
             title: "Topographic Survey",
             description: "High-precision mapping for land development and engineering.",
-            image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2070&auto=format&fit=crop",
+            image: topoImg,
             overview: {
                 title: "Topographic Mapping Overview",
                 content: "We deliver CAD-ready topographic maps and Digital Terrain Models (DTM) for construction, mining, and urban planning. Our aerial surveys cover huge areas rapidly, capturing every terrain feature with high geometric fidelity.",
-                image: "https://images.unsplash.com/photo-1524813686514-a57563d77965?q=80&w=2070&auto=format&fit=crop"
+                image: topoImg
             },
             benefits: [
                 { title: "Survey Grade", description: "Accuracy down to 1-3 cm with RTK/PPK." },
