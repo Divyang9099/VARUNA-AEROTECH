@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { siteConfig } from '../siteConfig';
 import { CheckCircle, ArrowRight, FileText, Download } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -22,21 +23,32 @@ const ServiceDetail = () => {
             {/* Header / Hero Section - "Blue print" style */}
             <section className="relative pt-32 pb-20 bg-blue-950 text-white overflow-hidden">
                 <div className="absolute inset-0 bg-blue-900/20 mix-blend-multiply"></div>
-                <div className="relative max-w-6xl mx-auto px-6 md:px-16 lg:px-24 text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="relative max-w-6xl mx-auto px-6 md:px-16 lg:px-24 text-center"
+                >
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 font-serif tracking-wide">
                         {service.title}
                     </h1>
                     <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto font-light leading-relaxed">
                         {service.description}
                     </p>
-                </div>
+                </motion.div>
             </section>
 
             {/* Overview Section - Image Left, Text Right */}
             <section className="py-20 section-padding">
                 <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
                     <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-                        <div className="w-full lg:w-1/2">
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="w-full lg:w-1/2"
+                        >
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/20 group">
                                 <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 <img
@@ -45,8 +57,14 @@ const ServiceDetail = () => {
                                     className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
                                 />
                             </div>
-                        </div>
-                        <div className="w-full lg:w-1/2 space-y-6">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="w-full lg:w-1/2 space-y-6"
+                        >
                             <h2 className="text-3xl font-bold text-slate-900 border-l-4 border-blue-600 pl-4">
                                 {service.overview.title}
                             </h2>
@@ -58,7 +76,7 @@ const ServiceDetail = () => {
                                     Request a Consultation <ArrowRight className="w-5 h-5" />
                                 </a>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -73,7 +91,14 @@ const ServiceDetail = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {service.benefits.map((benefit, idx) => (
-                            <div key={idx} className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 hover:-translate-y-1 transition-all duration-300">
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 hover:-translate-y-1 transition-all duration-300"
+                            >
                                 <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mb-6">
                                     <CheckCircle className="w-6 h-6" />
                                 </div>
@@ -81,7 +106,7 @@ const ServiceDetail = () => {
                                 <p className="text-slate-600 leading-relaxed">
                                     {benefit.description}
                                 </p>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
@@ -98,7 +123,14 @@ const ServiceDetail = () => {
                     <div className="flex flex-col lg:flex-row gap-16 items-center">
                         <div className="w-full lg:w-1/2 space-y-8">
                             {service.process.map((step, idx) => (
-                                <div key={idx} className="flex gap-6 group">
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -30 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                    className="flex gap-6 group"
+                                >
                                     <div className="flex-shrink-0">
                                         <div className="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-lg shadow-lg group-hover:bg-blue-600 transition-colors duration-300">
                                             {idx + 1}
@@ -111,10 +143,16 @@ const ServiceDetail = () => {
                                         <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{step.title}</h3>
                                         <p className="text-slate-600 leading-relaxed">{step.description}</p>
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
-                        <div className="w-full lg:w-1/2">
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="w-full lg:w-1/2"
+                        >
                             <div className="relative h-full min-h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                                 <img
                                     src={service.image}
@@ -126,7 +164,7 @@ const ServiceDetail = () => {
                                     <p className="font-serif italic text-lg opacity-90">"Precision in every flight, accuracy in every report."</p>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -141,13 +179,20 @@ const ServiceDetail = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {service.deliverables.map((item, idx) => (
-                            <div key={idx} className="bg-white p-6 rounded-xl border border-blue-100 hover:shadow-lg hover:border-blue-300 transition-all duration-300 group">
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                className="bg-white p-6 rounded-xl border border-blue-100 hover:shadow-lg hover:border-blue-300 transition-all duration-300 group"
+                            >
                                 <div className="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                     <FileText className="w-5 h-5" />
                                 </div>
                                 <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
                                 <p className="text-sm text-slate-600 mb-4 h-10">{item.description}</p>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>

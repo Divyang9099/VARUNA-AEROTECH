@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { siteConfig } from '../siteConfig';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
     useEffect(() => {
@@ -29,16 +30,26 @@ const Contact = () => {
         <div className="min-h-screen bg-gray-50 py-16 pt-32">
             <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
                 {/* Header */}
-                <div className="text-center mb-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-12"
+                >
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         Ready to optimize your renewable energy assets? Get in touch with our expert team.
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                     {/* Left Column: Contact Info */}
-                    <div className="order-2 lg:order-1 space-y-8">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="order-2 lg:order-1 space-y-8"
+                    >
                         {/* Get in Touch Box */}
                         <div className="bg-white rounded-xl shadow-lg p-8 transition-all hover:shadow-xl">
                             <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
@@ -93,10 +104,15 @@ const Contact = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Right Column: Contact Form */}
-                    <div className="bg-white rounded-xl shadow-lg p-8 order-1 lg:order-2 h-fit">
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="bg-white rounded-xl shadow-lg p-8 order-1 lg:order-2 h-fit"
+                    >
                         <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h2>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -159,7 +175,7 @@ const Contact = () => {
                                 Send Message
                             </button>
                         </form>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ import {
     CheckCircle,
     Target
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -50,7 +51,13 @@ const IndustryDetail = () => {
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* Breadcrumb */}
-                <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-6" aria-label="Breadcrumb">
+                <motion.nav
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="flex items-center space-x-2 text-sm text-gray-600 mb-6"
+                    aria-label="Breadcrumb"
+                >
                     <Link to="/" className="flex items-center hover:text-blue-600 transition-colors" aria-label="Home">
                         <Home className="w-4 h-4" />
                     </Link>
@@ -66,19 +73,30 @@ const IndustryDetail = () => {
                             {industry.title}
                         </span>
                     </div>
-                </nav>
+                </motion.nav>
 
                 {/* Back Link */}
-                <Link
-                    to="/#industries"
-                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors mb-8 font-medium"
+                <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                    <ArrowLeft className="w-4 h-4" />
-                    Back to Industries
-                </Link>
+                    <Link
+                        to="/#industries"
+                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors mb-8 font-medium"
+                    >
+                        <ArrowLeft className="w-4 h-4" />
+                        Back to Industries
+                    </Link>
+                </motion.div>
 
                 {/* Article Card */}
-                <article className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                <motion.article
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
+                >
                     {/* Cover Image */}
                     <div className="aspect-video overflow-hidden relative">
                         <img
@@ -203,7 +221,7 @@ const IndustryDetail = () => {
                         <span>Varuna Aerotech Industry Intelligence</span>
                         <span>&copy; {new Date().getFullYear()}</span>
                     </div>
-                </article>
+                </motion.article>
             </div>
         </div>
     );

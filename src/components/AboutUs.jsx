@@ -1,5 +1,6 @@
 import React from 'react';
 import { siteConfig } from '../siteConfig';
+import { motion } from 'framer-motion';
 import { CheckCircle, Zap, Award, Users } from 'lucide-react';
 
 const AboutUs = () => {
@@ -8,7 +9,13 @@ const AboutUs = () => {
         <section id="about" className="section-padding bg-white py-24">
             <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
                 {/* Who We Are Section */}
-                <div className="mb-20">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-20"
+                >
                     <h2 className="text-4xl font-serif font-bold text-slate-900 mb-8">{aboutPage.whoWeAre.title}</h2>
                     <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-4xl">
                         {aboutPage.whoWeAre.description}
@@ -42,11 +49,17 @@ const AboutUs = () => {
                             "{aboutPage.whoWeAre.tagline}"
                         </p>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Mission & Vision */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-                    <div className="p-8 bg-white rounded-3xl border border-blue-100 flex flex-col h-full hover:shadow-xl hover:border-blue-600 transition-all duration-300 group">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="p-8 bg-white rounded-3xl border border-blue-100 flex flex-col h-full hover:shadow-xl hover:border-blue-600 transition-all duration-300 group"
+                    >
                         <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                             <Zap className="w-6 h-6" />
                         </div>
@@ -54,8 +67,14 @@ const AboutUs = () => {
                         <p className="text-slate-600 leading-relaxed flex-1">
                             {aboutPage.mission.text}
                         </p>
-                    </div>
-                    <div className="p-8 bg-white rounded-3xl border border-blue-100 flex flex-col h-full hover:shadow-xl hover:border-blue-600 transition-all duration-300 group">
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="p-8 bg-white rounded-3xl border border-blue-100 flex flex-col h-full hover:shadow-xl hover:border-blue-600 transition-all duration-300 group"
+                    >
                         <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                             <Users className="w-6 h-6" />
                         </div>
@@ -63,20 +82,46 @@ const AboutUs = () => {
                         <p className="text-slate-600 leading-relaxed flex-1">
                             {aboutPage.vision.text}
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Core Values */}
-                <div className="text-center mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-16"
+                >
                     <h2 className="text-4xl font-serif font-bold text-slate-900 mb-4">Our Core Values</h2>
                     <p className="text-slate-600 text-lg max-w-2xl mx-auto">
                         The principles that drive everything we do at Varuna Aerotech.
                     </p>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={{
+                        hidden: {},
+                        visible: {
+                            transition: {
+                                staggerChildren: 0.1
+                            }
+                        }
+                    }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
                     {aboutPage.coreValues.map((value, index) => (
-                        <div key={index} className="bg-white p-8 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center group">
+                        <motion.div
+                            key={index}
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                            }}
+                            className="bg-white p-8 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center group"
+                        >
                             <div className="w-14 h-14 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                                 <value.icon className="w-7 h-7" />
                             </div>
@@ -84,9 +129,9 @@ const AboutUs = () => {
                             <p className="text-slate-600 text-sm leading-relaxed">
                                 {value.description}
                             </p>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
