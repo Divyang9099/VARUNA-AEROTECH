@@ -105,7 +105,8 @@ const Services = () => {
                                 className="flex flex-col md:flex-row justify-center items-center gap-4"
                             >
                                 {visibleServices.map((service, index) => (
-                                    <div
+                                    <Link
+                                        to={`/services/${service.id}`}
                                         key={index}
                                         className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 group h-full flex flex-col w-full md:max-w-xs border border-slate-100"
                                     >
@@ -117,22 +118,22 @@ const Services = () => {
                                             />
                                         </div>
                                         <div className="p-6 flex-1 flex flex-col">
-                                            <Link to={`/services/${service.id}`} className="block">
+                                            <div className="block">
                                                 <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                                                     {service.title}
                                                 </h3>
-                                            </Link>
+                                            </div>
                                             <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
                                                 {service.description}
                                             </p>
 
                                             <div className="flex justify-end mt-auto">
-                                                <Link to={`/services/${service.id}`} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white transition-all">
+                                                <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white transition-all">
                                                     <ChevronRight className="w-5 h-5" />
-                                                </Link>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 ))}
                             </motion.div>
                         </AnimatePresence>
