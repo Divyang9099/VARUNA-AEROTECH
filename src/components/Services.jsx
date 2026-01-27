@@ -51,14 +51,26 @@ const Services = () => {
     return (
         <section id="services" className="section-padding bg-slate-50 py-24">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-16"
+                >
                     <h2 className="text-4xl font-serif font-bold text-slate-900 mb-4">Our Services</h2>
                     <p className="text-slate-600 text-lg max-w-3xl mx-auto">
                         Advanced Precision diagnostics and inspection services for solar power plants and transmission-line assets.
                     </p>
-                </div>
+                </motion.div>
 
-                <div className="relative max-w-sm md:max-w-none mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="relative max-w-sm md:max-w-none mx-auto"
+                >
                     {/* Navigation Buttons */}
                     <button
                         onClick={prevSlide}
@@ -149,7 +161,7 @@ const Services = () => {
                             />
                         ))}
                     </div>
-                </div >
+                </motion.div>
             </div >
         </section >
     );
