@@ -5,7 +5,7 @@ const WhyUs = () => (
     <section className="section-padding bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-                <h2 className="text-4xl font-serif font-bold text-slate-900 mb-4">Our Varuna Edge</h2>
+                <h2 className="text-4xl font-serif font-bold text-slate-900 mb-4">Why we:"Our Varuna Edge"</h2>
                 <p className="text-slate-600 text-lg max-w-2xl mx-auto">
                     Why industry leaders choose us for critical infrastructure diagnostics.
                 </p>

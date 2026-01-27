@@ -67,13 +67,26 @@ const Footer = () => (
                     <ul className="space-y-4 text-sm">
                         <li className="flex items-start gap-3">
                             <MapPin className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                            <span className="text-blue-100 max-w-[200px]">{siteConfig.contact.address}</span>
+                            <a
+                                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.address)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-100 max-w-[200px] hover:text-white transition-colors"
+                            >
+                                {siteConfig.contact.address}
+                            </a>
                         </li>
                         <li className="flex items-center gap-3">
                             <Phone className="w-5 h-5 text-blue-400 shrink-0" />
                             <div className="flex flex-col">
                                 {siteConfig.contact.phones.map((phone, i) => (
-                                    <span key={i} className="text-blue-100">{phone}</span>
+                                    <a
+                                        key={i}
+                                        href={`tel:${phone.replace(/\s+/g, '')}`}
+                                        className="text-blue-100 hover:text-white transition-colors"
+                                    >
+                                        {phone}
+                                    </a>
                                 ))}
                             </div>
                         </li>
