@@ -1,4 +1,5 @@
 import { Camera, Shield, Zap, BarChart3, Globe, Cpu, Wind, Activity, Eye, FileText, Map, Settings, CheckCircle, Users, Layers, Award, FileCheck } from "lucide-react";
+import pipelineImg from './assets/pipeline_inspection_drone.png';
 
 export const siteConfig = {
     name: "VARUNA AEROTECH",
@@ -228,11 +229,11 @@ export const siteConfig = {
             id: "pipeline-inspection",
             title: "Pipeline Inspection",
             description: "Monitor pipeline integrity with thermal leak detection and surveillance.",
-            image: "https://images.unsplash.com/photo-1587375253018-b2102146ae45?q=80&w=2070&auto=format&fit=crop",
+            image: pipelineImg,
             overview: {
                 title: "Pipeline Integrity Overview",
                 content: "Our aerial solutions monitor oil, gas, and water pipelines for leaks, unauthorized activity, and environmental hazards. Thermal sensors detect temperature differentials caused by leaks, while high-res optics monitor the Right of Way (RoW).",
-                image: "https://images.unsplash.com/photo-1440615496137-5f6a6ca7aa04?q=80&w=2070&auto=format&fit=crop"
+                image: pipelineImg
             },
             benefits: [
                 { title: "Leak Detection", description: "Identify thermal signatures of subsurface leaks." },
