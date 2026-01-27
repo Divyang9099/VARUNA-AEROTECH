@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  /* Minimal Enterprise Light Theme */
+  --primary: #0ea5e9;
+  /* Sky Blue - keeping identity but on white */
+  --primary-dark: #0284c7;
+  --bg-page: #ffffff;
+  --bg-secondary: #f8fafc;
+  /* Slate 50 */
+  --text-main: #0f172a;
+  /* Slate 900 */
+  --text-muted: #64748b;
+  /* Slate 500 */
+  --border-color: #e2e8f0;
+  /* Slate 200 */
+}
+
+body {
+  @apply bg-[var(--bg-page)] text-[var(--text-main)] antialiased font-sans;
+  /* Remove heavy dark gradients, keep it clean */
+}
+
+/* Minimal Utility Classes */
+.section-padding {
+  @apply py-24 px-6;
+}
+
+.max-container {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Typography Scale */
+.h1-hero {
+  @apply text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1];
+}
+
+.h2-title {
+  @apply text-3xl md:text-4xl font-bold tracking-tight mb-4 text-[var(--text-main)];
+}
+
+.p-lead {
+  @apply text-lg md:text-xl text-[var(--text-muted)] leading-relaxed;
+}
+
+/* Minimal Cards */
+.card-minimal {
+  @apply bg-white border border-[var(--border-color)] p-8 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-[var(--primary)] text-white px-8 py-4 rounded-xl font-semibold transition-all hover:bg-[var(--primary-dark)] hover:shadow-lg active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-[var(--bg-secondary)] text-[var(--text-main)] border border-[var(--border-color)] px-8 py-4 rounded-xl font-semibold transition-all hover:bg-slate-100 active:scale-95;
+}
+
+.nav-link {
+  @apply text-sm font-medium text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors;
+}
