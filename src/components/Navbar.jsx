@@ -94,8 +94,8 @@ const Navbar = () => {
                                 {/* Desktop Dropdown */}
                                 {item.dropdown && (
                                     <div className={`absolute top-full right-0 w-72 pt-2 transition-all duration-200 ease-out ${desktopDropdownOpen === item.label
-                                            ? 'opacity-100 translate-y-0 visible'
-                                            : 'opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible'
+                                        ? 'opacity-100 translate-y-0 visible'
+                                        : 'opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible'
                                         }`}>
                                         <div className="bg-white shadow-xl border border-gray-100 overflow-hidden py-2 rounded-xl">
                                             {item.dropdown.map((subItem, subIndex) => {
@@ -109,7 +109,7 @@ const Navbar = () => {
                                                     <Link
                                                         key={subIndex}
                                                         to={href}
-                                                        className="block px-6 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                                                        className="block px-6 py-3 text-sm font-medium text-slate-700 hover:bg-blue-600 hover:text-white transition-colors"
                                                         onClick={() => {
                                                             setActiveLink(subItem);
                                                             setDesktopDropdownOpen(null);
