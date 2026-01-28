@@ -8,11 +8,26 @@ const Navbar = () => {
     const [activeLink, setActiveLink] = useState("Home");
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(null);
+    const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(null); // Added for hybrid hover/click support
     const location = useLocation();
 
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
     const toggleMobileDropdown = (label) => {
         setMobileDropdownOpen(mobileDropdownOpen === label ? null : label);
+    };
+
+    // Handle desktop touch/click interactions
+    const handleDesktopClick = (e, item) => {
+        if (item.dropdown) {
+            // If strictly a touch device or user wants to toggle
+            // We can prevent navigation on first click if menu isn't open
+            // But relying on state:
+            if (desktopDropdownOpen !== item.label) {
+                e.preventDefault();
+                setDesktopDropdownOpen(item.label);
+            }
+            // If already open, let it navigate (if it's a link) or do nothing
+        }
     };
 
     return (
@@ -27,7 +42,10 @@ const Navbar = () => {
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center gap-2 ml-auto">
                     {siteConfig.nav.map((item, index) => {
-                        const isActive = location.pathname === item.href || (item.label === "Services" && location.pathname.startsWith("/services/"));
+                        const isActive = location.pathname === item.href ||
+                            (item.label === "Services" && location.pathname.startsWith("/services/")) ||
+                            (item.label === "Industries" && location.pathname.startsWith("/industries/"));
+
                         const isAnchor = item.href.startsWith('#') || item.href.startsWith('http');
 
                         const linkContent = (
@@ -43,11 +61,19 @@ const Navbar = () => {
 
                         // Wrapper for positioning dropdown
                         return (
-                            <div key={index} className="relative group">
+                            <div
+                                key={index}
+                                className="relative group"
+                                onMouseEnter={() => setDesktopDropdownOpen(item.label)}
+                                onMouseLeave={() => setDesktopDropdownOpen(null)}
+                            >
                                 {isAnchor ? (
                                     <a
                                         href={item.href}
-                                        onClick={() => setActiveLink(item.label)}
+                                        onClick={(e) => {
+                                            handleDesktopClick(e, item);
+                                            setActiveLink(item.label);
+                                        }}
                                         className={className}
                                     >
                                         {linkContent}
@@ -55,7 +81,10 @@ const Navbar = () => {
                                 ) : (
                                     <Link
                                         to={item.href}
-                                        onClick={() => setActiveLink(item.label)}
+                                        onClick={(e) => {
+                                            handleDesktopClick(e, item);
+                                            setActiveLink(item.label);
+                                        }}
                                         className={className}
                                     >
                                         {linkContent}
@@ -64,7 +93,10 @@ const Navbar = () => {
 
                                 {/* Desktop Dropdown */}
                                 {item.dropdown && (
-                                    <div className="absolute top-full right-0 w-72 pt-2 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-200 ease-out">
+                                    <div className={`absolute top-full right-0 w-72 pt-2 transition-all duration-200 ease-out ${desktopDropdownOpen === item.label
+                                            ? 'opacity-100 translate-y-0 visible'
+                                            : 'opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible'
+                                        }`}>
                                         <div className="bg-white shadow-xl border border-gray-100 overflow-hidden py-2 rounded-xl">
                                             {item.dropdown.map((subItem, subIndex) => {
                                                 const service = siteConfig.services?.find(s => s.title === subItem);
@@ -78,7 +110,10 @@ const Navbar = () => {
                                                         key={subIndex}
                                                         to={href}
                                                         className="block px-6 py-3 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
-                                                        onClick={() => setActiveLink(subItem)}
+                                                        onClick={() => {
+                                                            setActiveLink(subItem);
+                                                            setDesktopDropdownOpen(null);
+                                                        }}
                                                     >
                                                         {subItem}
                                                     </Link>

@@ -52,6 +52,13 @@ const Industries = () => {
                             }}
                             className="group relative bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
                         >
+                            {/* Full Card Link Overlay */}
+                            <Link
+                                to={`/industries/${industry.id}`}
+                                className="absolute inset-0 z-10"
+                                aria-label={`Learn more about ${industry.title}`}
+                            />
+
                             <div className="relative h-64 overflow-hidden">
                                 <img
                                     src={industry.image}
@@ -68,12 +75,11 @@ const Industries = () => {
                                 <p className="text-slate-600 mb-6 leading-relaxed">
                                     {industry.description}
                                 </p>
-                                <Link
-                                    to={`/industries/${industry.id}`}
+                                <div
                                     className="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors"
                                 >
                                     Learn More <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                </Link>
+                                </div>
                             </div>
                         </motion.div>
                     ))}
