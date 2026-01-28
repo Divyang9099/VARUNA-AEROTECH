@@ -65,7 +65,13 @@ const Contact = () => {
                                         <h3 className="text-base font-semibold text-gray-900">Phone</h3>
                                         <div className="space-y-1 mt-1">
                                             {siteConfig.contact.phones.map((phone, i) => (
-                                                <p key={i} className="text-sm text-gray-600">{phone}</p>
+                                                <a
+                                                    key={i}
+                                                    href={`tel:${phone.replace(/\s+/g, '')}`}
+                                                    className="block text-sm text-gray-600 hover:text-blue-600 transition-colors"
+                                                >
+                                                    {phone}
+                                                </a>
                                             ))}
                                         </div>
                                         <p className="text-xs text-gray-500 mt-1">Monday - Friday, 9am - 6pm IST</p>
@@ -97,9 +103,14 @@ const Contact = () => {
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-base font-semibold text-gray-900">Address</h3>
-                                        <p className="text-sm text-gray-600 mt-1 leading-relaxed">
+                                        <a
+                                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.address)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block text-sm text-gray-600 mt-1 leading-relaxed hover:text-blue-600 transition-colors"
+                                        >
                                             {siteConfig.contact.address}
-                                        </p>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
