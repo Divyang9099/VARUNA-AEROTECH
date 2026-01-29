@@ -63,7 +63,7 @@ const IndustryDetail = () => {
                     </Link>
                     <div className="flex items-center space-x-2">
                         <ChevronRight className="w-4 h-4 text-gray-400" />
-                        <Link to="/#industries" className="hover:text-blue-600 transition-colors">
+                        <Link to="/industries" className="hover:text-blue-600 transition-colors">
                             Industries
                         </Link>
                     </div>
@@ -82,7 +82,7 @@ const IndustryDetail = () => {
                     transition={{ duration: 0.5, delay: 0.1 }}
                 >
                     <Link
-                        to="/#industries"
+                        to="/industries"
                         className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors mb-8 font-medium"
                     >
                         <ArrowLeft className="w-4 h-4" />

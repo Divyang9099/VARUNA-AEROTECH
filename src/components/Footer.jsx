@@ -22,6 +22,9 @@ const Footer = () => (
                         {siteConfig.description}
                     </p>
                     <div className="flex gap-4 pt-2">
+                        <a href="https://www.indiamart.com/company/257742402/" target="_blank" rel="noopener noreferrer" className="h-10 px-3 rounded-full bg-white flex items-center justify-center text-blue-950 font-bold text-xs hover:bg-gray-200 transition-all duration-300" title="Verified IndiaMART Supplier">
+                            IndiaMART
+                        </a>
                         <a href="#" className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-white hover:bg-white hover:text-blue-950 transition-all duration-300">
                             <Linkedin className="w-5 h-5" />
                         </a>
@@ -40,9 +43,9 @@ const Footer = () => (
                     <ul className="space-y-3">
                         {siteConfig.quickLinks.map((item, index) => (
                             <li key={index}>
-                                <Link to={item.href} className="text-blue-100 hover:text-white hover:pl-1 transition-all duration-200 block text-sm">
+                                <a href={item.href} className="text-blue-100 hover:text-white hover:pl-1 transition-all duration-200 block text-sm">
                                     {item.label}
-                                </Link>
+                                </a>
                             </li>
                         ))}
                     </ul>
@@ -60,9 +63,9 @@ const Footer = () => (
 
                             return (
                                 <li key={index}>
-                                    <Link to={linkTo} className="text-blue-100 hover:text-white hover:pl-1 transition-all duration-200 block text-sm">
+                                    <a href={linkTo} className="text-blue-100 hover:text-white hover:pl-1 transition-all duration-200 block text-sm">
                                         {title}
-                                    </Link>
+                                    </a>
                                 </li>
                             );
                         })}
@@ -76,7 +79,7 @@ const Footer = () => (
                         <li className="flex items-start gap-3">
                             <MapPin className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
                             <a
-                                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.address)}`}
+                                href="https://maps.app.goo.gl/nf3SNA5fWWN4oGuF9"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-blue-100 max-w-[200px] hover:text-white transition-colors"

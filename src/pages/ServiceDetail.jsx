@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+
 const ServiceDetail = () => {
     const { id } = useParams();
     const service = siteConfig.services.find(s => s.id === id);
@@ -18,8 +19,11 @@ const ServiceDetail = () => {
         return <Navigate to="/#services" replace />;
     }
 
+
+
     return (
         <div className="font-sans text-slate-900 bg-white">
+
             {/* Header / Hero Section - "Blue print" style */}
             <section className="relative pt-32 pb-20 bg-blue-950 text-white overflow-hidden">
                 <div className="absolute inset-0 bg-blue-900/20 mix-blend-multiply"></div>

@@ -19,11 +19,36 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Implement form submission logic here
-        console.log("Form submitted:", formData);
-        alert("Thanks for contacting us! We'll get back to you shortly.");
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('/contact_api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert("Thanks for contacting us! We'll get back to you shortly.");
+                setFormData({ name: '', email: '', company: '', message: '' });
+            } else {
+                alert("Something went wrong. Please try again later.");
+                console.error("Form error:", result);
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Failed to send message. Please check your connection.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -104,7 +129,7 @@ const Contact = () => {
                                     <div className="flex-1">
                                         <h3 className="text-base font-semibold text-gray-900">Address</h3>
                                         <a
-                                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.address)}`}
+                                            href="https://maps.app.goo.gl/nf3SNA5fWWN4oGuF9"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="block text-sm text-gray-600 mt-1 leading-relaxed hover:text-blue-600 transition-colors"
@@ -181,9 +206,10 @@ const Contact = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 disabled:opacity-50"
+                                disabled={isSubmitting}
+                                className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Send Message
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
                             </button>
                         </form>
                     </motion.div>

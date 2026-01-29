@@ -66,7 +66,7 @@ const Hero = () => {
                     className="absolute inset-0 z-0"
                 >
                     <div
-                        className="absolute inset-0 bg-cover bg-center"
+                        className="absolute inset-0 bg-cover bg-center kenburns-top"
                         style={{ backgroundImage: `url(${heroSlides[currentSlide].image})` }}
                     />
                 </motion.div>
@@ -84,7 +84,7 @@ const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        <span className="inline-block px-3 py-1 mb-4 md:mb-6 text-xs font-bold tracking-widest uppercase border border-white/30 rounded-full bg-white/10 backdrop-blur-sm text-white">
+                        <span className="inline-block px-3 py-1 mb-4 md:mb-6 text-xs font-bold tracking-widest uppercase border border-white/30 rounded-full bg-white/10 backdrop-blur-sm text-white shake-lr">
                             Advanced Diagnostics
                         </span>
                         <h1 className="text-4xl md:text-7xl font-serif font-bold leading-tight mb-4 md:mb-6 text-white drop-shadow-lg">
