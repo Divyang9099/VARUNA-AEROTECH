@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -12,6 +12,19 @@ const IndustriesPage = lazy(() => import('./pages/IndustriesPage'));
 const Contact = lazy(() => import('./pages/Contact'));
 
 function App() {
+  useEffect(() => {
+    // Warm up the backend as soon as the app loads to avoid delays on the contact form
+    const warmUpBackend = async () => {
+      try {
+        await fetch('https://varuna-backend-3mco.onrender.com/');
+        console.log('🚀 Backend warm-up initiated...');
+      } catch (err) {
+        console.log('⏳ Backend is waking up...');
+      }
+    };
+    warmUpBackend();
+  }, []);
+
   return (
     <Router>
       <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col">

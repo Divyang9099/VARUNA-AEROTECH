@@ -7,7 +7,7 @@ const heroSlides = [
     {
         id: 1,
         // Keep existing image/color props
-        image: "/hero_solar_latest.jpg",
+        image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029624/varuna-aerotech/hero_solar_latest.jpg",
         color: "from-blue-900/80 to-slate-900/80",
         content: {
             mainTitle: siteConfig.hero.title,
@@ -21,7 +21,7 @@ const heroSlides = [
     },
     {
         id: 2,
-        image: "/hero_wind_new.jpg",
+        image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029634/varuna-aerotech/hero_wind_new.jpg",
         color: "from-emerald-900/80 to-slate-900/80",
         content: {
             mainTitle: "Renewable Energy",
@@ -48,7 +48,7 @@ const heroSlides = [
     },
     {
         id: 4,
-        image: "/hero_industrial_hd.jpg",
+        image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029616/varuna-aerotech/hero_industrial_hd.jpg",
         color: "from-cyan-900/80 to-slate-900/80",
         content: {
             mainTitle: "Industrial | Utility",
@@ -62,7 +62,7 @@ const heroSlides = [
     },
     {
         id: 5,
-        image: "/hero_infrastructure_new.jpg",
+        image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029619/varuna-aerotech/hero_infrastructure_new.jpg",
         color: "from-indigo-900/80 to-slate-900/80",
         content: {
             mainTitle: "Infrastructure | Land",
