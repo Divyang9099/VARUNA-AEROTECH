@@ -16,7 +16,7 @@ export const siteConfig = {
     logo: "/logo.png",
 
     hero: {
-        title: "Aerial Data Intelligence",
+        title: "Aerial Data Acquisition",
         subtitle: "Drone Thermography • EL Testing • Barcode Scanning • Transmission-Line Inspection. Reports compliant with IEC 62446-3:2022.",
         bullets: ["Aerial Data Intelligence", "On Demand Aerial Data Acquisition"]
     },
@@ -28,14 +28,13 @@ export const siteConfig = {
             label: "Services",
             href: "#services",
             dropdown: [
+                "Aerial Data Acquisition",
                 "Solar Panel Inspection",
                 "Windmill Inspection",
                 "Powerline Inspection",
-                "Pipeline Inspection",
-                "Infrastructure Monitoring",
-                "Surveillance",
-                "Industrial Utility Inspection",
-                "Inventory Management",
+                "Pipeline/Utility Inspection",
+                "Infrastructure Progress Monitoring",
+                "Industrial Surveillance",
                 "Topographic Survey"
             ]
         },
@@ -141,6 +140,37 @@ export const siteConfig = {
 
     services: [
         {
+            id: "aerial-data-acquisition",
+            title: "Aerial Data Acquisition",
+            description: "High-resolution aerial imagery and data capture for comprehensive site analysis.",
+            image: inventoryImg, // Reusing inventory image as it fits general data capture
+            overview: {
+                title: "Aerial Data Acquisition Overview",
+                content: "We provide on-demand aerial data acquisition services using state-of-the-art drones equipped with high-resolution RGB, thermal, and multispectral sensors. Whether for mapping, modeling, or inspection, our data provides the foundation for informed decision-making.",
+                image: inventoryImg
+            },
+            benefits: [
+                { title: "High Resolution", description: "Capture details invisible to the naked eye." },
+                { title: "Rapid Deployment", description: "Survey large areas in a fraction of the time." },
+                { title: "Multi-Sensor", description: "RGB, Thermal, and LiDAR capabilities." },
+                { title: "Actionable Data", description: "Process-ready data for engineering and analysis." },
+                { title: "Cost Effective", description: "Significantly cheaper than manned aircraft survey." },
+                { title: "Safety", description: "Remote operation keeps personnel out of harm's way." }
+            ],
+            process: [
+                { title: "Flight Planning", description: "Define area of interest and required resolution." },
+                { title: "Data Capture", description: "Systematic automated flight execution." },
+                { title: "Processing", description: "image stitching and data calibration." },
+                { title: "Delivery", description: "Cloud-based delivery of raw and processed assets." }
+            ],
+            deliverables: [
+                { title: "Orthomosaics", description: "High-res stitched maps." },
+                { title: "Raw Imagery", description: "Original uncompressed sensor data." },
+                { title: "3D Models", description: "Photogrammetric reconstructions." },
+                { title: "Point Clouds", description: "Dense 3D data points." }
+            ]
+        },
+        {
             id: "solar-panel-inspection",
             title: "Solar Panel Inspection",
             description: "Maximize energy yield with IEC-compliant thermal inspections.",
@@ -234,74 +264,74 @@ export const siteConfig = {
             ]
         },
         {
-            id: "pipeline-inspection",
-            title: "Pipeline Inspection",
-            description: "Monitor pipeline integrity with thermal leak detection and surveillance.",
+            id: "pipeline-utility-inspection",
+            title: "Pipeline/Utility Inspection",
+            description: "Monitor pipeline integrity and industrial utilities with thermal precision.",
             image: pipelineImg,
             overview: {
-                title: "Pipeline Integrity Overview",
-                content: "Our aerial solutions monitor oil, gas, and water pipelines for leaks, unauthorized activity, and environmental hazards. Thermal sensors detect temperature differentials caused by leaks, while high-res optics monitor the Right of Way (RoW).",
+                title: "Pipeline & Utility Overview",
+                content: "Our combined pipeline and utility inspection services ensure the security and efficiency of critical transport and processing infrastructure. We monitor for leaks, RoW encroachments, and utility insulation failures using dual-sensor drones.",
                 image: pipelineImg
             },
             benefits: [
-                { title: "Leak Detection", description: "Identify thermal signatures of subsurface leaks." },
+                { title: "Dual Detection", description: "Simultaneous leak detection and visual security." },
+                { title: "Heat Loss Analysis", description: "Identify insulation failures in utility piping." },
                 { title: "RoW Monitoring", description: "Detect unauthorized construction or excavation." },
                 { title: "Environmental Safety", description: "Prevent contamination through early warning." },
-                { title: "Cost Effective", description: "More frequent and cheaper than manned helicopter patrols." },
-                { title: "Geo-referenced Data", description: "Exact location of every anomaly found." },
-                { title: "Change Detection", description: "Compare surveys to spot terrain or asset shifts." }
+                { title: "Cost Efficiency", description: "Combined survey reduces mobilization costs." },
+                { title: "Regulatory Compliance", description: "Adhere to safety and environmental standards." }
             ],
             process: [
-                { title: "Route Planning", description: "Define linear flight plans along the pipeline RoW." },
-                { title: "Dual-Sensor Flight", description: "Capture thermal for leaks and RGB for visual status." },
-                { title: "Anomaly Detection", description: "Process data to flag potential leaks or encroachments." },
-                { title: "Alert Generation", description: "Immediate notification for critical findings." }
+                { title: "Route Planning", description: "Define linear flight plans for pipelines and utility corridors." },
+                { title: "Sensor Acquisition", description: "Capture high-res thermal and RGB data." },
+                { title: "Anomaly Analysis", description: "Flag leaks, encroachments, and thermal defects." },
+                { title: "Reporting", description: "Comprehensive reporting for maintenance action." }
             ],
             deliverables: [
-                { title: "Leak Report", description: "GPS coordinates and thermal imagery of suspected leaks." },
-                { title: "RoW Video", description: "Full high-definition flyover video of the corridor." },
-                { title: "Change Analysis", description: "Report showing changes from previous inspections." },
-                { title: "GIS Layer", description: "Integration ready files for your asset map." }
+                { title: "Leak/Fault Report", description: "GPS coordinates of suspected leaks or defects." },
+                { title: "RoW Video", description: "Full high-definition flyover video." },
+                { title: "Thermal Analysis", description: "Temperature gradient maps of utilities." },
+                { title: "GIS Layer", description: "Integration ready files for asset maps." }
             ]
         },
         {
-            id: "infrastructure-monitoring",
-            title: "Infrastructure Monitoring",
-            description: "Assess the structural health of bridges, dams, and roads.",
+            id: "infrastructure-progress-monitoring",
+            title: "Infrastructure Progress Monitoring",
+            description: "Track construction and structural health over time.",
             image: infrastructureImg,
             overview: {
-                title: "Structural Health Overview",
-                content: "We provide detailed visual and thermal inspections of critical infrastructure like bridges, dams, and telecommunication towers. Our data helps engineers identify spalling, corrosion, stress cracks, and other structural defects without expensive scaffolding.",
+                title: "Progress Monitoring Overview",
+                content: "We provide detailed visual and thermal tracking of infrastructure projects. From construction progress to structural health monitoring of bridges and dams, our digital twins and reports ensure projects stay on track and assets remain safe.",
                 image: infrastructureImg
             },
             benefits: [
+                { title: "Visual Timeline", description: "Compare site status across different dates." },
                 { title: "Remote Access", description: "Reach hard-to-access areas safely." },
-                { title: "High Resolution", description: "Capture sub-millimeter details of structural defects." },
-                { title: "Thermal Insights", description: "Detect internal delamination or moisture ingress." },
-                { title: "Digital Archiving", description: "Maintain a visual history of asset condition." },
-                { title: "Safety First", description: "Reduce risk to inspectors by using unmanned systems." },
-                { title: "Operational Continuity", description: "Inspect without shutting down the asset (often)." }
+                { title: "High Resolution", description: "Capture sub-millimeter details." },
+                { title: "Digital Archiving", description: "Maintain a visual history of the asset." },
+                { title: "Stakeholder Updates", description: "Share progress easily with investors/owners." },
+                { title: "Delay Mitigation", description: "Identify bottlenecks early." }
             ],
             process: [
-                { title: "Mission Scoping", description: "Identify critical structural zones for inspection." },
-                { title: "Data Acquisition", description: "Close-proximity flight for detailed imagery." },
-                { title: "3D Reconstruction", description: "Create photogrammetric models of the structure." },
-                { title: "Engineering Review", description: "Civil engineers analyze data for defects." }
+                { title: "Mission Scoping", description: "Identify key areas for progress tracking." },
+                { title: "Regular Flights", description: "Scheduled data capture at fixed intervals." },
+                { title: "3D Reconstruction", description: "Create photogrammetric models." },
+                { title: "Timeline Generation", description: "Compile data into a progress report." }
             ],
             deliverables: [
-                { title: "3D Cloud/Mesh", description: "Interactable model of the infrastructure." },
-                { title: "Defect Report", description: "Annotated images showing cracks, rust, etc." },
-                { title: "Orthomosaic Map", description: "Top-down high-res view of the site." },
-                { title: "Measurement Data", description: "Precise dimensions of identified defects." }
+                { title: "Progress Report", description: "Visual comparison of planned vs actual." },
+                { title: "3D Cloud/Mesh", description: "Interactable model of the site." },
+                { title: "Orthomosaic Map", description: "Top-down high-res view." },
+                { title: "Measurement Data", description: "Volume and dimensional checks." }
             ]
         },
         {
-            id: "surveillance",
-            title: "Surveillance",
+            id: "industrial-surveillance",
+            title: "Industrial Surveillance",
             description: "Aerial security and perimeter monitoring for critical assets.",
             image: surveillanceImg,
             overview: {
-                title: "Aerial Surveillance Overview",
+                title: "Industrial Surveillance Overview",
                 content: "Our surveillance drones provide real-time aerial situational awareness for large industrial plants, construction sites, and event venues. We offer active monitoring to deter intrusion, document progress, and ensure site safety compliance.",
                 image: surveillanceImg
             },
@@ -324,68 +354,6 @@ export const siteConfig = {
                 { title: "Incident Reports", description: "Time-stamped video clips of security events." },
                 { title: "Patrol Logs", description: "Documentation of flight times and areas covered." },
                 { title: "Site Maps", description: "Updated aerial maps for security planning." }
-            ]
-        },
-        {
-            id: "industrial-utility-inspection",
-            title: "Industrial Utility Inspection",
-            description: "Detailed thermal and visual inspection of factory utilities.",
-            image: utilityImg,
-            overview: {
-                title: "Industrial Utility Overview",
-                content: "Factories and refineries rely on complex utility networks. We inspect flare stacks, cooling towers, chimneys, and external piping for thermal leaks, insulation failure, and structural integrity, ensuring operational efficiency and safety.",
-                image: utilityImg
-            },
-            benefits: [
-                { title: "Online Inspection", description: "No need for plant shutdown during inspection." },
-                { title: "Heat Loss Detection", description: "Identify poor insulation and energy waste." },
-                { title: "Hazard Reduction", description: "Avoid putting humans in high-heat or height zones." },
-                { title: "Preventative Maintenance", description: "Catch issues before they cause failure." },
-                { title: "Compliance", description: "Adhere to environmental and safety regulations." },
-                { title: "Comprehensive View", description: "See the top-side of assets rarely visible from ground." }
-            ],
-            process: [
-                { title: "Safety Briefing", description: "Align with plant safety protocols and permits." },
-                { title: "Asset Survey", description: "Systematic thermal scanning of utility assets." },
-                { title: "Data Analysis", description: "Thermal experts quantify heat loss and severity." },
-                { title: "Remediation Plan", description: "Report generation for maintenance teams." }
-            ],
-            deliverables: [
-                { title: "Thermal Report", description: "Images showing temperature distribution." },
-                { title: "Visual Defect Log", description: "Photos of rust, cracks, or damage." },
-                { title: "Energy Loss Estimate", description: "Calculations on potential savings from repairs." },
-                { title: "Asset Condition Score", description: "Rating system for utility health." }
-            ]
-        },
-        {
-            id: "inventory-management",
-            title: "Inventory Management",
-            description: "Volumetric measurements for stockpiles and quarries.",
-            image: inventoryImg,
-            overview: {
-                title: "Stockpile Volumetrics Overview",
-                content: "Accurately measuring large stockpiles of coal, aggregate, or minerals is time-consuming manually. Our drone photogrammetry generates precise 3D volumetric data in minutes, providing accurate inventory audits and reconciliation.",
-                image: inventoryImg
-            },
-            benefits: [
-                { title: "99% Accuracy", description: "Survey-grade accuracy comparable to LiDAR." },
-                { title: "Fast Results", description: "Stockpile reports generated within 24 hours." },
-                { title: "Safety", description: "No surveyors walking on unstable piles." },
-                { title: "Audit Trail", description: "Digital record of inventory at specific dates." },
-                { title: "Cost Savings", description: "Fraction of the cost of traditional surveying." },
-                { title: "Material Tracking", description: "Monitor cut/fill volumes over time." }
-            ],
-            process: [
-                { title: "GCP Placement", description: "Set Ground Control Points for maximum accuracy." },
-                { title: "Aerial Grid Flight", description: "Capture overlapping nadir imagery." },
-                { title: "Photogrammetry", description: "Process images into a dense 3D point cloud." },
-                { title: "Volume Calculation", description: "Compute volumes relative to base plane." }
-            ],
-            deliverables: [
-                { title: "Volume Report", description: "PDF with volume calculations for each pile." },
-                { title: "Contour Map", description: "Topographic lines of the stockpile site." },
-                { title: "3D Mesh", description: "Visualization of the inventory." },
-                { title: "Inventory Table", description: "CSV file for ERP integration." }
             ]
         },
         {
@@ -571,14 +539,13 @@ export const siteConfig = {
     ],
 
     footerServices: [
+        "Aerial Data Acquisition",
         "Solar Panel Inspection",
         "Windmill Inspection",
         "Powerline Inspection",
-        "Pipeline Inspection",
-        "Infrastructure Monitoring",
-        "Surveillance",
-        "Industrial Utility Inspection",
-        "Inventory Management",
+        "Pipeline/Utility Inspection",
+        "Infrastructure Progress Monitoring",
+        "Industrial Surveillance",
         "Topographic Survey"
     ]
 };

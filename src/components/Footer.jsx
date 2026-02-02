@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { siteConfig } from '../siteConfig';
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => (
     <footer id="contact" className="bg-blue-950 text-white pt-20 pb-10 border-t border-blue-900">
@@ -21,20 +21,7 @@ const Footer = () => (
                     <p className="text-blue-100 text-sm leading-relaxed max-w-sm">
                         {siteConfig.description}
                     </p>
-                    <div className="flex gap-4 pt-2">
-                        <a href="https://www.indiamart.com/company/257742402/" target="_blank" rel="noopener noreferrer" className="h-10 px-3 rounded-full bg-white flex items-center justify-center text-blue-950 font-bold text-xs hover:bg-gray-200 transition-all duration-300" title="Verified IndiaMART Supplier">
-                            IndiaMART
-                        </a>
-                        <a href="#" className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-white hover:bg-white hover:text-blue-950 transition-all duration-300">
-                            <Linkedin className="w-5 h-5" />
-                        </a>
-                        <a href="#" className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-white hover:bg-white hover:text-blue-950 transition-all duration-300">
-                            <Facebook className="w-5 h-5" />
-                        </a>
-                        <a href="#" className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-white hover:bg-white hover:text-blue-950 transition-all duration-300">
-                            <Instagram className="w-5 h-5" />
-                        </a>
-                    </div>
+
                 </div>
 
                 {/* Column 2: Quick Links */}

@@ -75,11 +75,7 @@ const ServiceDetail = () => {
                             <p className="text-lg text-slate-600 leading-relaxed">
                                 {service.overview.content}
                             </p>
-                            <div className="pt-4">
-                                <a href="#contact" className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition-colors">
-                                    Request a Consultation <ArrowRight className="w-5 h-5" />
-                                </a>
-                            </div>
+
                         </motion.div>
                     </div>
                 </div>

@@ -8,44 +8,39 @@ const Contact = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        company: '',
-        message: ''
-    });
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+
         try {
-            const response = await fetch('/contact_api.php', {
+            // Point to your live Node.js backend on Render
+            const response = await fetch('https://varuna-backend-3mco.onrender.com/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(data),
             });
 
             const result = await response.json();
 
-            if (response.ok) {
-                alert("Thanks for contacting us! We'll get back to you shortly.");
-                setFormData({ name: '', email: '', company: '', message: '' });
+            if (response.ok && result.status === 'success') {
+                alert("Message sent successfully!");
+                e.target.reset();
             } else {
-                alert("Something went wrong. Please try again later.");
-                console.error("Form error:", result);
+                // Show the exact error from Node.js (e.g. "Invalid Login", "Timeout")
+                const detailedError = result.error || result.message || "Unknown error";
+                alert(`EMAIL FAILED: ${detailedError}\n\nPlease take a screenshot of this error.`);
+                console.error("Full Backend Response:", result);
             }
         } catch (error) {
-            console.error("Submission error:", error);
-            alert("Failed to send message. Please check your connection.");
+            console.error("Network Error:", error);
+            alert("Could not connect to the server. Is the backend running?");
         } finally {
             setIsSubmitting(false);
         }
@@ -54,7 +49,6 @@ const Contact = () => {
     return (
         <div className="min-h-screen bg-gray-50 py-16 pt-32">
             <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
-                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -75,13 +69,11 @@ const Contact = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="order-2 lg:order-1 space-y-8"
                     >
-                        {/* Get in Touch Box */}
                         <div className="bg-white rounded-xl shadow-lg p-8 transition-all hover:shadow-xl">
                             <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
                                 Get in Touch
                             </h2>
                             <div className="space-y-6">
-                                {/* Phone */}
                                 <div className="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-50 hover:shadow-md hover:scale-[1.02] transform transition-all duration-300">
                                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 text-blue-600">
                                         <Phone className="w-5 h-5" />
@@ -90,20 +82,14 @@ const Contact = () => {
                                         <h3 className="text-base font-semibold text-gray-900">Phone</h3>
                                         <div className="space-y-1 mt-1">
                                             {siteConfig.contact.phones.map((phone, i) => (
-                                                <a
-                                                    key={i}
-                                                    href={`tel:${phone.replace(/\s+/g, '')}`}
-                                                    className="block text-sm text-gray-600 hover:text-blue-600 transition-colors"
-                                                >
+                                                <a key={i} href={`tel:${phone.replace(/\s+/g, '')}`} className="block text-sm text-gray-600 hover:text-blue-600 transition-colors">
                                                     {phone}
                                                 </a>
                                             ))}
                                         </div>
-                                        <p className="text-xs text-gray-500 mt-1">Monday - Friday, 9am - 6pm IST</p>
                                     </div>
                                 </div>
 
-                                {/* Email */}
                                 <div className="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-50 hover:shadow-md hover:scale-[1.02] transform transition-all duration-300">
                                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 text-blue-600">
                                         <Mail className="w-5 h-5" />
@@ -117,23 +103,16 @@ const Contact = () => {
                                                 </a>
                                             ))}
                                         </div>
-                                        <p className="text-xs text-gray-500 mt-1">We'll respond within 24 hours</p>
                                     </div>
                                 </div>
 
-                                {/* Address */}
                                 <div className="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-50 hover:shadow-md hover:scale-[1.02] transform transition-all duration-300">
                                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 text-blue-600">
                                         <MapPin className="w-5 h-5" />
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-base font-semibold text-gray-900">Address</h3>
-                                        <a
-                                            href="https://maps.app.goo.gl/nf3SNA5fWWN4oGuF9"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="block text-sm text-gray-600 mt-1 leading-relaxed hover:text-blue-600 transition-colors"
-                                        >
+                                        <a href="https://maps.app.goo.gl/nf3SNA5fWWN4oGuF9" target="_blank" rel="noopener noreferrer" className="block text-sm text-gray-600 mt-1 leading-relaxed hover:text-blue-600 transition-colors">
                                             {siteConfig.contact.address}
                                         </a>
                                     </div>
@@ -153,63 +132,36 @@ const Contact = () => {
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                                    <input
-                                        id="name"
-                                        name="name"
-                                        type="text"
-                                        required
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                                        placeholder="Your full name"
-                                    />
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                                    <input name="name" type="text" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors" placeholder="Your full name" />
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
-                                    <input
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        required
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                                        placeholder="your@email.com"
-                                    />
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+                                    <input name="email" type="email" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors" placeholder="your@email.com" />
                                 </div>
                             </div>
                             <div>
-                                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
-                                <input
-                                    id="company"
-                                    name="company"
-                                    type="text"
-                                    value={formData.company}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                                    placeholder="Your company name"
-                                />
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                                <input name="company" type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors" placeholder="Your company name" />
                             </div>
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message *</label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows="4"
-                                    required
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
-                                    placeholder="Tell us about your project and requirements..."
-                                ></textarea>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+                                <textarea name="message" rows="4" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors resize-none" placeholder="Tell us about your project..."></textarea>
                             </div>
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className={`w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}
                             >
-                                {isSubmitting ? 'Sending...' : 'Send Message'}
+                                {isSubmitting ? (
+                                    <>
+                                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Sending...
+                                    </>
+                                ) : 'Send Message'}
                             </button>
                         </form>
                     </motion.div>

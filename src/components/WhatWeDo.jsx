@@ -87,20 +87,7 @@ const WhatWeDo = () => (
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
 
-                        {/* Compliance Badge Overlay */}
-                        <div className="absolute bottom-6 left-6 right-6">
-                            <div className="bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-lg border border-white/20 flex items-start gap-4">
-                                <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
-                                    <CheckCircle className="w-6 h-6" />
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-slate-900 text-sm mb-0.5">IEC Compliant</h4>
-                                    <p className="text-xs text-slate-600 font-medium">
-                                        {siteConfig.whatWeDo.compliance}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </motion.div>
             </div>
