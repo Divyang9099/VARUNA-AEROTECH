@@ -8,22 +8,22 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#00B4D8", // Logo cyan
-          dark: "#0369a1",
+          DEFAULT: "#1486C9", // Logo blue
+          dark: "#0f6ba3",
         },
-        // Override default blue with logo colors
+        // Override default blue with logo color #1486C9
         blue: {
-          50: '#e0f7ff',
-          100: '#b3ebff',
-          200: '#80deff',
-          300: '#4dd1ff',
-          400: '#26c6ff',
-          500: '#00B4D8',  // Logo cyan (main)
-          600: '#0096b8',
-          700: '#007a98',
-          800: '#005e78',
-          900: '#004258',
-          950: '#1e3a8a',  // Logo navy (dark)
+          50: '#e6f4fb',
+          100: '#cce9f7',
+          200: '#99d3ef',
+          300: '#66bde7',
+          400: '#33a7df',
+          500: '#1486C9',  // Logo blue (MAIN COLOR)
+          600: '#106ba1',
+          700: '#0c5079',
+          800: '#083551',
+          900: '#041a29',
+          950: '#1e3a8a',  // Dark navy for contrast
         }
       },
     },
