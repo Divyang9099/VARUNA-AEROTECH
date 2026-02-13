@@ -107,9 +107,19 @@ const AboutUs = () => {
                                     </div>
                                     <h3 className="text-3xl font-serif font-bold text-slate-900 mb-6 group-hover:text-blue-700 transition-colors">{aboutPage.mission.title}</h3>
                                 </div>
-                                <p className="text-slate-700 font-medium leading-relaxed text-lg max-w-lg mx-auto">
-                                    {aboutPage.mission.text}
-                                </p>
+                                {aboutPage.mission.points ? (
+                                    <ul className="text-left space-y-4 px-4 list-disc marker:text-blue-600">
+                                        {aboutPage.mission.points.map((point, index) => (
+                                            <li key={index} className="text-slate-700 font-medium leading-relaxed text-lg">
+                                                {point}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p className="text-slate-700 font-medium leading-relaxed text-lg max-w-lg mx-auto">
+                                        {aboutPage.mission.text}
+                                    </p>
+                                )}
                             </div>
                         </motion.div>
 

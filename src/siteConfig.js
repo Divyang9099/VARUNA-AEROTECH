@@ -1,15 +1,15 @@
 import { Camera, Shield, Zap, BarChart3, Globe, Cpu, Wind, Activity, Eye, FileText, Map, Settings, CheckCircle, Users, Layers, Award, FileCheck } from "lucide-react";
 
 // Cloudinary URLs for service/industry images
-const pipelineImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770030411/varuna-aerotech/assets/pipeline_inspection_drone.jpg";
-const solarImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770030414/varuna-aerotech/assets/solar_panel_inspection_drone.jpg";
-const windImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770030417/varuna-aerotech/assets/windmill_inspection_drone.jpg";
-const powerlineImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770030422/varuna-aerotech/assets/powerline_inspection_drone.jpg";
-const infrastructureImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770030424/varuna-aerotech/assets/infrastructure_monitoring_drone.jpg";
-const surveillanceImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770030427/varuna-aerotech/assets/surveillance_drone.jpg";
-const utilityImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770030433/varuna-aerotech/assets/industrial_utility_drone.jpg";
-const inventoryImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770030442/varuna-aerotech/assets/inventory_management_drone.jpg";
-const topoImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770030446/varuna-aerotech/assets/topographic_survey_drone.jpg";
+const pipelineImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770030411/varuna-aerotech/assets/pipeline_inspection_drone.jpg";
+const solarImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770030414/varuna-aerotech/assets/solar_panel_inspection_drone.jpg";
+const windImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770030417/varuna-aerotech/assets/windmill_inspection_drone.jpg";
+const powerlineImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770030422/varuna-aerotech/assets/powerline_inspection_drone.jpg";
+const infrastructureImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770030424/varuna-aerotech/assets/infrastructure_monitoring_drone.jpg";
+const surveillanceImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770030427/varuna-aerotech/assets/surveillance_drone.jpg";
+const utilityImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770030433/varuna-aerotech/assets/industrial_utility_drone.jpg";
+const inventoryImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770030442/varuna-aerotech/assets/inventory_management_drone.jpg";
+const topoImg = "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770030446/varuna-aerotech/assets/topographic_survey_drone.jpg";
 
 export const siteConfig = {
     name: "VARUNA AEROTECH",
@@ -76,11 +76,14 @@ export const siteConfig = {
         },
         mission: {
             title: "Mission",
-            text: "To empower asset owners with cutting-edge diagnostics, standardized field inspections, and intelligent analytics—enabling faster decisions, minimized losses, and maximized energy yield across every stage of the asset lifecycle."
+            points: [
+                "Our mission is to provide efficient, data-driven, and safe inspection services to the industrial sector by leveraging advanced drone technology and AI-powered analytics.",
+                "We are committed to minimizing risk to human life, optimizing safety & maintenance processes and delivering actionable insights that empower businesses to make informed decisions and achieve operational excellence"
+            ]
         },
         vision: {
             title: "Vision",
-            text: "To become the most trusted global partner in energy infrastructure diagnostics—ensuring every solar plant and transmission line performs at its peak, sustainably and safely."
+            text: "To be the pioneer in industrial aerial intelligence by driving innovation and delivering unparalleled efficiency, quality, and safety through reliable cutting-edge drone solutions."
         },
         coreValues: [
             {

@@ -91,11 +91,11 @@ const WhatWeDo = () => (
                     transition={{ duration: 0.8 }}
                     className="w-full md:w-1/2"
                 >
-                    <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video group">
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                         <img
-                            src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?q=80&w=2070&auto=format&fit=crop"
+                            src="https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770991324/varuna-aerotech/what-we-do.jpg"
                             alt="Drone Inspection"
-                            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                            className="w-full h-auto transform transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
 

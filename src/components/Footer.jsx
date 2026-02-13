@@ -12,7 +12,7 @@ const Footer = () => (
                 {/* Column 1: Brand */}
                 <div className="space-y-6">
                     <div>
-                        <div className="bg-white p-4 rounded-xl inline-block mb-3">
+                        <div className="inline-block mb-3">
                             <img src={siteConfig.logo} alt={siteConfig.name} className="h-16 w-auto" />
                         </div>
                         <div className="flex flex-col">
