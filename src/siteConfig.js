@@ -28,7 +28,7 @@ export const siteConfig = {
         { label: "About Us", href: "/about" },
         {
             label: "Services",
-            href: "#services",
+            href: "/#services",
             dropdown: [
                 "Aerial Data Acquisition",
                 "Solar Panel Inspection",

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+import ScrollToTop from './components/ScrollToTop';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -10,6 +11,7 @@ const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const IndustryDetail = lazy(() => import('./pages/IndustryDetail'));
 const IndustriesPage = lazy(() => import('./pages/IndustriesPage'));
 const Contact = lazy(() => import('./pages/Contact'));
+const FeatureDetail = lazy(() => import('./pages/FeatureDetail'));
 
 function App() {
   useEffect(() => {
@@ -27,6 +29,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col">
         <Navbar />
         <main className="flex-grow relative">
@@ -37,6 +40,7 @@ function App() {
               <Route path="/services/:id" element={<ServiceDetail />} />
               <Route path="/industries" element={<IndustriesPage />} />
               <Route path="/industries/:id" element={<IndustryDetail />} />
+              <Route path="/features/:id" element={<FeatureDetail />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </Suspense>

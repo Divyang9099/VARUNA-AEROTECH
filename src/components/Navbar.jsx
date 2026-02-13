@@ -46,7 +46,7 @@ const Navbar = () => {
                             (item.label === "Services" && location.pathname.startsWith("/services/")) ||
                             (item.label === "Industries" && location.pathname.startsWith("/industries/"));
 
-                        const isAnchor = item.href.startsWith('#') || item.href.startsWith('http');
+                        const className = `flex items-center gap-1 text-sm font-bold px-4 py-2.5 rounded-md transition-all duration-300 ${isActive ? 'bg-blue-600 text-white' : 'text-slate-700 hover:bg-blue-600 hover:text-white'}`;
 
                         const linkContent = (
                             <>
@@ -57,9 +57,8 @@ const Navbar = () => {
                             </>
                         );
 
-                        const className = `flex items-center gap-1 text-sm font-bold px-4 py-2.5 rounded-md transition-all duration-300 ${isActive ? 'bg-blue-600 text-white' : 'text-slate-700 group-hover:bg-blue-600 group-hover:text-white'}`;
+                        const isExternal = item.href.startsWith('http');
 
-                        // Wrapper for positioning dropdown
                         return (
                             <div
                                 key={index}
@@ -67,13 +66,11 @@ const Navbar = () => {
                                 onMouseEnter={() => setDesktopDropdownOpen(item.label)}
                                 onMouseLeave={() => setDesktopDropdownOpen(null)}
                             >
-                                {isAnchor ? (
+                                {isExternal ? (
                                     <a
                                         href={item.href}
-                                        onClick={(e) => {
-                                            handleDesktopClick(e, item);
-                                            setActiveLink(item.label);
-                                        }}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className={className}
                                     >
                                         {linkContent}
@@ -84,6 +81,7 @@ const Navbar = () => {
                                         onClick={(e) => {
                                             handleDesktopClick(e, item);
                                             setActiveLink(item.label);
+                                            setIsMobileMenuOpen(false);
                                         }}
                                         className={className}
                                     >
@@ -148,7 +146,7 @@ const Navbar = () => {
                     >
                         <div className="flex flex-col p-4 space-y-2">
                             {siteConfig.nav.map((item, index) => {
-                                const isAnchor = item.href.startsWith('#') || item.href.startsWith('http');
+                                const isAnchor = item.href.includes('#') || item.href.startsWith('http');
                                 const hasDropdown = !!item.dropdown;
                                 const isDropdownOpen = mobileDropdownOpen === item.label;
 

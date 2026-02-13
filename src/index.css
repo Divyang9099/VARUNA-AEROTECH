@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -285,4 +286,286 @@ body {
     box-shadow: 0 -8px #076fe5;
     height: 40px;
   }
+}
+
+/* Custom Service Section Styles */
+.our-services-section {
+  background-color: #f5f7fa;
+  padding: 80px 0;
+}
+
+.service-card-wrapper {
+  background: #dbeafe;
+  /* Light blue border color */
+  padding: 4px;
+  /* Reduced width from 12px to 4px */
+  border-radius: 20px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.service-card-wrapper:hover {
+  background: #2563eb;
+  /* Primary brand blue on hover */
+}
+
+.service-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding-bottom: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+}
+
+.service-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.service-card-content {
+  padding: 12px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.service-card p {
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 10px;
+  flex-grow: 1;
+  line-height: 1.4;
+}
+
+.service-explore-link {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Why We: Our Varuna Edge - Particles Background */
+.varuna-edge-section {
+  position: relative;
+  background: #ffffff;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.varuna-content {
+  position: relative;
+  z-index: 2;
+}
+
+.edge-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+/* Gradient Topography Background */
+.topography-section {
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.topo-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 1;
+  /* High visibility */
+}
+
+.topo-layer {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-30%, -50%);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.04);
+  /* Subtle depth shadow */
+  transition: all 0.8s ease-in-out;
+}
+
+/* Premium Contrast Gradient Palette - More Visible */
+.topo-layer-1 {
+  width: 140%;
+  height: 170%;
+  background: #f8fafc;
+  z-index: 1;
+}
+
+.topo-layer-2 {
+  width: 120%;
+  height: 150%;
+  background: #f1f5f9;
+  z-index: 2;
+}
+
+.topo-layer-3 {
+  width: 105%;
+  height: 135%;
+  background: #e2e8f0;
+  z-index: 3;
+}
+
+.topo-layer-4 {
+  width: 90%;
+  height: 120%;
+  background: #dee5ed;
+  z-index: 4;
+}
+
+.topo-layer-5 {
+  width: 75%;
+  height: 105%;
+  background: #d7e0ea;
+  z-index: 5;
+}
+
+.topo-layer-6 {
+  width: 60%;
+  height: 90%;
+  background: #ccd7e4;
+  z-index: 6;
+}
+
+.topo-layer-7 {
+  width: 45%;
+  height: 75%;
+  background: #c3d0df;
+  z-index: 7;
+}
+
+.topography-content {
+  position: relative;
+  z-index: 20;
+  /* Keep content on very top */
+}
+
+/* Halftone Wave Background for Services */
+.our-services-section {
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+  padding: 80px 0 60px 0;
+}
+
+.our-services-section::before,
+.our-services-section::after {
+  content: "";
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+  background-image: radial-gradient(#94a3b8 3px, transparent 0);
+  background-size: 32px 32px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Specific Positions for the Halftone Waves */
+.our-services-section::before {
+  top: -400px;
+  right: -350px;
+  transform: rotate(-5deg);
+  mask-image: radial-gradient(circle at top right, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at top right, black, transparent 80%);
+}
+
+.our-services-section::after {
+  bottom: -400px;
+  left: -350px;
+  transform: rotate(5deg);
+  mask-image: radial-gradient(circle at bottom left, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at bottom left, black, transparent 80%);
+}
+
+.services-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Responsive Footer Background */
+.footer-section {
+  background-image: url('https://res.cloudinary.com/ddsjqtxik/image/upload/v1770712911/varuna-aerotech/rm209-ning-19-l.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  font-family: 'Outfit', sans-serif;
+}
+
+@media (min-width: 1024px) {
+  .footer-section {
+    background-attachment: fixed;
+    /* Parallax effect on desktop */
+  }
+}
+
+.footer-bg-overlay {
+  background: transparent;
+}
+
+.footer-section h4 {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+}
+
+.footer-section p,
+.footer-section li,
+.footer-section a,
+.footer-section span {
+  color: #334155 !important;
+  font-weight: 500 !important;
+}
+
+.footer-section a:hover {
+  color: #0284c7 !important;
+}
+
+.footer-section .border-t {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+.footer-section .text-blue-400 {
+  color: #0284c7 !important;
 }

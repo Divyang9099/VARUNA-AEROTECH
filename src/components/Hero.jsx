@@ -1,80 +1,79 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FileText, Cloud, Compass, MessageSquare, Thermometer, Camera, Layers } from 'lucide-react';
 import { siteConfig } from '../siteConfig';
 
-const heroSlides = [
-    {
-        id: 1,
-        // Keep existing image/color props
-        image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029624/varuna-aerotech/hero_solar_latest.jpg",
-        color: "from-blue-900/80 to-slate-900/80",
-        content: {
-            mainTitle: siteConfig.hero.title,
-            subTitle: "On Demand Aerial Data Capturing",
-            features: [
-                { label: "Thermal Data", icon: Thermometer, color: "text-blue-400" },
-                { label: "RGB Data", icon: Camera, color: "text-emerald-400" },
-                { label: "LiDAR Data", icon: Layers, color: "text-purple-400" }
-            ]
-        }
-    },
-    {
-        id: 2,
-        image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029634/varuna-aerotech/hero_wind_new.jpg",
-        color: "from-emerald-900/80 to-slate-900/80",
-        content: {
-            mainTitle: "Renewable Energy",
-            subTitle: "",
-            features: [
-                { label: "Solar Plant Inspection", icon: Thermometer, color: "text-orange-400" },
-                { label: "Windmill Inspection", icon: Cloud, color: "text-sky-400" },
-                { label: "E2E Solar Project Progress Tracking", icon: Compass, color: "text-yellow-400" }
-            ]
-        }
-    },
-    {
-        id: 3,
-        image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop",
-        color: "from-slate-900/80 to-gray-900/80",
-        content: {
-            mainTitle: "Power Sector",
-            subTitle: "",
-            features: [
-                { label: "Transmission Tower Inspection", icon: Layers, color: "text-cyan-400" },
-                { label: "Power Line Inspection", icon: FileText, color: "text-teal-400" }
-            ]
-        }
-    },
-    {
-        id: 4,
-        image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029616/varuna-aerotech/hero_industrial_hd.jpg",
-        color: "from-cyan-900/80 to-slate-900/80",
-        content: {
-            mainTitle: "Industrial | Utility",
-            subTitle: "",
-            features: [
-                { label: "Pipeline Inspection", icon: Compass, color: "text-rose-400" },
-                { label: "Surveillance", icon: Camera, color: "text-red-400" },
-                { label: "Utility Inspection", icon: FileText, color: "text-blue-400" }
-            ]
-        }
-    },
-    {
-        id: 5,
-        image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029619/varuna-aerotech/hero_infrastructure_new.jpg",
-        color: "from-indigo-900/80 to-slate-900/80",
-        content: {
-            mainTitle: "Infrastructure | Land",
-            subTitle: "",
-            features: [
-                { label: "Project Progress Monitoring", icon: FileText, color: "text-indigo-400" },
-                { label: "Volume Estimation", icon: Layers, color: "text-violet-400" },
-                { label: "Topographical Survey", icon: Compass, color: "text-fuchsia-400" }
-            ]
-        }
+const heroSlides = [{
+    id: 1,
+    // Keep existing image/color props
+    image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029624/varuna-aerotech/hero_solar_latest.jpg",
+    color: "from-blue-900/80 to-slate-900/80",
+    content: {
+        mainTitle: siteConfig.hero.title,
+        subTitle: "On Demand Aerial Data Capturing",
+        features: [
+            { id: "thermal-data", label: "Thermal Data", icon: Thermometer, color: "text-blue-400" },
+            { id: "rgb-data", label: "RGB Data", icon: Camera, color: "text-emerald-400" },
+            { id: "lidar-data", label: "LiDAR Data", icon: Layers, color: "text-purple-400" }
+        ]
     }
-];
+},
+{
+    id: 2,
+    image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029634/varuna-aerotech/hero_wind_new.jpg",
+    color: "from-emerald-900/80 to-slate-900/80",
+    content: {
+        mainTitle: "Renewable Energy",
+        subTitle: "",
+        features: [
+            { id: "solar-plant-inspection", label: "Solar Plant Inspection", icon: Thermometer, color: "text-orange-400" },
+            { id: "windmill-inspection", label: "Windmill Inspection", icon: Cloud, color: "text-sky-400" },
+            { id: "solar-project-tracking", label: "E2E Solar Project Progress Tracking", icon: Compass, color: "text-yellow-400" }
+        ]
+    }
+},
+{
+    id: 3,
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop",
+    color: "from-slate-900/80 to-gray-900/80",
+    content: {
+        mainTitle: "Power Sector",
+        subTitle: "",
+        features: [
+            { id: "transmission-tower-inspection", label: "Transmission Tower Inspection", icon: Layers, color: "text-cyan-400" },
+            { id: "power-line-inspection", label: "Power Line Inspection", icon: FileText, color: "text-teal-400" }
+        ]
+    }
+},
+{
+    id: 4,
+    image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029616/varuna-aerotech/hero_industrial_hd.jpg",
+    color: "from-cyan-900/80 to-slate-900/80",
+    content: {
+        mainTitle: "Industrial | Utility",
+        subTitle: "",
+        features: [
+            { id: "pipeline-inspection", label: "Pipeline Inspection", icon: Compass, color: "text-rose-400" },
+            { id: "surveillance", label: "Surveillance", icon: Camera, color: "text-red-400" },
+            { id: "utility-inspection", label: "Utility Inspection", icon: FileText, color: "text-blue-400" }
+        ]
+    }
+},
+{
+    id: 5,
+    image: "https://res.cloudinary.com/ddsjqtxik/image/upload/v1770029619/varuna-aerotech/hero_infrastructure_new.jpg",
+    color: "from-indigo-900/80 to-slate-900/80",
+    content: {
+        mainTitle: "Infrastructure | Land",
+        subTitle: "",
+        features: [
+            { id: "project-progress-monitoring", label: "Project Progress Monitoring", icon: FileText, color: "text-indigo-400" },
+            { id: "volume-estimation", label: "Volume Estimation", icon: Layers, color: "text-violet-400" },
+            { id: "topographical-survey", label: "Topographical Survey", icon: Compass, color: "text-fuchsia-400" }
+        ]
+    }
+}];
 
 const Hero = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -143,10 +142,14 @@ const Hero = () => {
                             </p>
                             <div className="flex flex-col gap-3 mb-8 md:mb-10 flex items-start">
                                 {heroSlides[currentSlide].content.features.map((feature, index) => (
-                                    <div key={index} className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 group min-w-[200px]">
+                                    <Link
+                                        to={`/features/${feature.id}`}
+                                        key={index}
+                                        className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 group min-w-[200px]"
+                                    >
                                         <feature.icon className={`w-5 h-5 ${feature.color} group-hover:scale-110 transition-transform`} />
                                         <span className="font-medium tracking-wide">{feature.label}</span>
-                                    </div>
+                                    </Link>
                                 ))}
                             </div>
                         </motion.div>

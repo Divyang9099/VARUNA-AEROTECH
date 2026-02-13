@@ -14,10 +14,11 @@ const Industries = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-4xl font-serif font-bold text-slate-900 mb-4"
+                        className="text-4xl font-serif font-bold text-slate-900 mb-2"
                     >
                         Industries We Serve
                     </motion.h2>
+                    <div className="mx-auto w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-4"></div>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

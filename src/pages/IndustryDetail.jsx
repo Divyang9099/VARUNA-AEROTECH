@@ -13,8 +13,7 @@ import {
     Target
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+
 
 const IndustryDetail = () => {
     const { id } = useParams();
@@ -166,7 +165,8 @@ const IndustryDetail = () => {
 
                             {/* Applications (Bulleted or Styled) */}
                             <div>
-                                <h4 className="text-xl font-bold text-blue-900 mb-6">Key Applications</h4>
+                                <h4 className="text-xl font-bold text-blue-900 mb-2">Key Applications</h4>
+                                <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-6"></div>
                                 <ul className="space-y-4 list-none pl-0">
                                     {industry.applications.map((app, idx) => (
                                         <li key={idx} className="flex gap-4 items-start bg-slate-50 p-4 rounded-lg border border-slate-100">
@@ -185,16 +185,39 @@ const IndustryDetail = () => {
                             <hr className="border-gray-200 my-10" />
 
                             {/* Benefits */}
-                            <div>
-                                <h4 className="text-xl font-bold text-blue-900 mb-6">Key Benefits</h4>
+                            <div className="mb-12">
+                                <h4 className="text-xl font-bold text-blue-900 mb-2">Key Benefits</h4>
+                                <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-6"></div>
                                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
                                     {industry.benefits.map((benefit, idx) => (
-                                        <li key={idx} className="flex items-center gap-3">
-                                            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                                            <span className="text-gray-700">{benefit}</span>
+                                        <li key={idx} className="flex items-center gap-3 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                                            <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                                            <span className="text-slate-700 font-medium">{benefit}</span>
                                         </li>
                                     ))}
                                 </ul>
+                            </div>
+
+                            {/* Our Process Section */}
+                            <div className="mb-12 pt-8 border-t border-slate-100">
+                                <h4 className="text-xl font-bold text-blue-900 mb-2">Our Process</h4>
+                                <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-8"></div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    {[
+                                        { title: "Site Analysis", desc: "Understanding industry-specific constraints." },
+                                        { title: "Smart Planning", desc: "Optimization of flight & sensor parameters." },
+                                        { title: "Precision Capture", desc: "High-fidelity industrial data acquisition." },
+                                        { title: "Cloud Insights", desc: "Digital twin & actionable severity reports." }
+                                    ].map((step, idx) => (
+                                        <div key={idx} className="relative p-6 bg-slate-50 rounded-2xl border border-white shadow-sm hover:shadow-md transition-shadow">
+                                            <span className="absolute -top-3 -left-3 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
+                                                {idx + 1}
+                                            </span>
+                                            <h5 className="font-bold text-slate-900 mb-2 mt-2">{step.title}</h5>
+                                            <p className="text-sm text-slate-600 leading-relaxed">{step.desc}</p>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
                             <hr className="border-gray-200 my-10" />

@@ -4,8 +4,9 @@ import { siteConfig } from '../siteConfig';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => (
-    <footer id="contact" className="bg-blue-950 text-white pt-20 pb-10 border-t border-blue-900">
-        <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
+    <footer id="contact" className="footer-section pt-20 pb-10 border-t border-slate-200 relative overflow-hidden">
+        <div className="footer-bg-overlay absolute inset-0 z-0"></div>
+        <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
                 {/* Column 1: Brand */}
