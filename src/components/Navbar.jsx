@@ -142,7 +142,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-xl"
+                        className="md:hidden bg-white border-t border-gray-100 shadow-xl max-h-[80vh] overflow-y-auto"
                     >
                         <div className="flex flex-col p-4 space-y-2">
                             {siteConfig.nav.map((item, index) => {

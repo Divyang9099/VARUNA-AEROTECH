@@ -140,7 +140,7 @@ const Hero = () => {
                             <p className="text-xl md:text-3xl text-white/90 mb-6 font-bold drop-shadow-md">
                                 {heroSlides[currentSlide].content.subTitle}
                             </p>
-                            <div className="flex flex-col gap-3 mb-8 md:mb-10 flex items-start">
+                            <div className="flex flex-col md:flex-row flex-wrap gap-3 mb-8 md:mb-10 items-start">
                                 {heroSlides[currentSlide].content.features.map((feature, index) => (
                                     <Link
                                         to={`/features/${feature.id}`}

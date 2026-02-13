@@ -30,7 +30,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col">
+      <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col overflow-x-hidden">
         <Navbar />
         <main className="flex-grow relative">
           <Suspense fallback={<Loader />}>

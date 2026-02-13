@@ -10,7 +10,7 @@ const AboutUs = () => {
     return (
         <div id="about" className="overflow-x-hidden">
             {/* Full Width Who We Are Section - Light Airy Design */}
-            <section className="relative w-full py-32 bg-slate-50 overflow-hidden">
+            <section className="relative w-full py-20 md:py-32 bg-slate-50 overflow-hidden">
                 {/* Decorative Background - Flowing Blue Waves matching reference */}
                 <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none bg-white">
                     <svg className="absolute w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="none">
