@@ -8,9 +8,9 @@ const __dirname = path.dirname(__filename);
 
 // Cloudinary Configuration
 cloudinary.config({
-    cloud_name: 'ddsjqtxik',
-    api_key: '259773431821748',
-    api_secret: '7oTJzV2J4zMPxiHAWOnvhCjbGAc'
+    cloud_name: 'sdfsfgv,
+    api_key: 'xyz',
+    api_secret: 'you api secrete'
 });
 
 // Function to upload a single image
