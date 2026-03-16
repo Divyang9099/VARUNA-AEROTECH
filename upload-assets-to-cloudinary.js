@@ -8,9 +8,9 @@ const __dirname = path.dirname(__filename);
 
 // Cloudinary Configuration
 cloudinary.config({
-    cloud_name: 'ddsjqtxik',
-    api_key: '259773431821748',
-    api_secret: '7oTJzV2J4zMPxiHAWOnvhCjbGAc'
+    cloud_name: 'xyz',
+    api_key: 'your api',
+    api_secret: 'your secreate'
 });
 
 const assetsDir = path.join(__dirname, 'src', 'assets');
