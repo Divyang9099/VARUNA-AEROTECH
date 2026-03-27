@@ -48,7 +48,7 @@ const IndustryDetail = () => {
                 I will add a top margin to account for the fixed navbar. */}
             <div className="pt-24"></div>
 
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
                 {/* Breadcrumb */}
                 <motion.nav
                     initial={{ opacity: 0, y: -10 }}
@@ -106,15 +106,15 @@ const IndustryDetail = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent"></div>
                     </div>
 
-                    <div className="p-6 md:p-12">
+                    <div className="p-5 sm:p-8 md:p-12">
                         {/* Title */}
-                        <h1 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6 leading-tight font-serif">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-6 leading-tight" style={{letterSpacing: '-0.03em'}}>
                             {industry.title}
                         </h1>
 
                         {/* Metadata Bar */}
-                        <div className="flex items-center justify-between mb-8 pb-8 border-b border-gray-200">
-                            <div className="flex items-center gap-6 text-gray-600 flex-wrap">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 pb-8 border-b border-gray-200 gap-4">
+                            <div className="flex items-center gap-4 sm:gap-6 text-sm sm:text-base text-gray-600 flex-wrap">
                                 <div className="flex items-center gap-2">
                                     <User className="w-5 h-5 text-blue-600" />
                                     <span>Varuna Aerotech</span>
@@ -141,13 +141,13 @@ const IndustryDetail = () => {
                         <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
 
                             {/* Short Description Intro */}
-                            <p className="font-medium text-xl text-slate-800 border-l-4 border-blue-500 pl-4 py-1 bg-blue-50/50 rounded-r-lg">
+                            <p className="font-medium text-lg sm:text-xl text-slate-800 border-l-4 border-blue-500 pl-4 py-1 bg-blue-50/50 rounded-r-lg">
                                 {industry.description}
                             </p>
 
                             {/* Overview Section */}
                             <div className="mt-8">
-                                <h3 className="text-2xl font-bold text-blue-900 mb-4">{industry.overview.title}</h3>
+                                <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-4">{industry.overview.title}</h3>
                                 <p className="text-gray-700 mb-6">
                                     {industry.overview.content}
                                 </p>
@@ -188,7 +188,7 @@ const IndustryDetail = () => {
                             <div className="mb-12">
                                 <h4 className="text-xl font-bold text-blue-900 mb-2">Key Benefits</h4>
                                 <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-6"></div>
-                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
+                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none pl-0">
                                     {industry.benefits.map((benefit, idx) => (
                                         <li key={idx} className="flex items-center gap-3 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
                                             <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />

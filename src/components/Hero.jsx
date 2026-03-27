@@ -86,7 +86,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden bg-slate-900">
+        <section className="relative h-screen min-h-[500px] flex items-center overflow-hidden bg-slate-900">
 
             {/* Background Slider */}
             {/* Background Slider */}
@@ -123,7 +123,7 @@ const Hero = () => {
             <div className="absolute inset-0 z-0 bg-black/40" />
 
             {/* Content */}
-            <div className="relative z-10 container max-w-7xl mx-auto px-6 pt-20">
+            <div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 pt-20">
                 <div className="max-w-4xl text-white">
                     <AnimatePresence mode="wait">
                         <motion.div
@@ -134,21 +134,21 @@ const Hero = () => {
                             transition={{ duration: 0.5 }}
                             className="animate-none"
                         >
-                            <h1 className="text-4xl md:text-7xl font-serif font-bold leading-tight mb-4 md:mb-6 text-white drop-shadow-lg">
+                            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight mb-3 md:mb-6 text-white drop-shadow-lg" style={{fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.03em'}}>
                                 {heroSlides[currentSlide].content.mainTitle}
                             </h1>
-                            <p className="text-xl md:text-3xl text-white/90 mb-6 font-bold drop-shadow-md">
+                            <p className="text-base sm:text-xl md:text-3xl text-white/90 mb-5 font-semibold drop-shadow-md">
                                 {heroSlides[currentSlide].content.subTitle}
                             </p>
-                            <div className="flex flex-col gap-3 mb-8 md:mb-10 items-start">
+                            <div className="flex flex-col gap-2 mb-6 md:mb-10 items-start">
                                 {heroSlides[currentSlide].content.features.map((feature, index) => (
                                     <Link
                                         to={`/features/${feature.id}`}
                                         key={index}
-                                        className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 group min-w-[200px]"
+                                        className="flex items-center gap-3 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 group"
                                     >
-                                        <feature.icon className={`w-5 h-5 ${feature.color} group-hover:scale-110 transition-transform`} />
-                                        <span className="font-medium tracking-wide">{feature.label}</span>
+                                        <feature.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${feature.color} group-hover:scale-110 transition-transform flex-shrink-0`} />
+                                        <span className="font-semibold text-sm sm:text-base tracking-wide">{feature.label}</span>
                                     </Link>
                                 ))}
                             </div>
@@ -157,7 +157,7 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="absolute bottom-10 right-10 z-20 flex items-center gap-4 text-white">
+            <div className="absolute bottom-6 right-4 sm:bottom-10 sm:right-10 z-20 flex items-center gap-4 text-white">
                 <div className="flex gap-2">
                     {heroSlides.map((_, idx) => (
                         <button

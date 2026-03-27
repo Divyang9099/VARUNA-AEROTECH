@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+
 
 :root {
   /* Minimal Enterprise Light Theme */
@@ -18,9 +19,25 @@
 }
 
 body {
-  @apply bg-[var(--bg-page)] text-[var(--text-main)] antialiased font-sans;
-  /* Remove heavy dark gradients, keep it clean */
+  font-family: 'Space Grotesk', sans-serif !important;
+  @apply bg-[var(--bg-page)] text-[var(--text-main)] antialiased;
 }
+
+/* Ensure Space Grotesk applies to ALL elements */
+*, *::before, *::after {
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p, span, a, li, label, input, textarea, button {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 
 /* Minimal Utility Classes */
 .section-padding {
@@ -33,15 +50,22 @@ body {
 
 /* Typography Scale */
 .h1-hero {
-  @apply text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1];
+  @apply text-4xl md:text-7xl font-extrabold tracking-tight leading-[1.1];
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.04em;
 }
 
 .h2-title {
   @apply text-3xl md:text-4xl font-bold tracking-tight mb-4 text-[var(--text-main)];
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.025em;
+  opacity: 0.95;
 }
 
 .p-lead {
   @apply text-lg md:text-xl text-[var(--text-muted)] leading-relaxed;
+  font-weight: 500;
+  opacity: 0.85;
 }
 
 /* Minimal Cards */
@@ -59,7 +83,9 @@ body {
 }
 
 .nav-link {
-  @apply text-sm font-medium text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors;
+  @apply text-sm text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 /* ----------------------------------------------
@@ -345,6 +371,8 @@ body {
   margin-bottom: 6px;
   color: #0f172a;
   line-height: 1.2;
+  letter-spacing: -0.02em;
+  opacity: 0.95;
 }
 
 .service-card p {
@@ -530,7 +558,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 @media (min-width: 1024px) {

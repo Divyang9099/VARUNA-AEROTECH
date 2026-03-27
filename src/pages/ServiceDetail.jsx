@@ -24,18 +24,18 @@ const ServiceDetail = () => {
         <div className="font-sans text-slate-900 bg-white">
 
             {/* Header / Hero Section - "Blue print" style */}
-            <section className="relative pt-32 pb-20 bg-blue-950 text-white overflow-hidden">
+            <section className="relative pt-24 pb-14 sm:pt-32 sm:pb-20 bg-blue-950 text-white overflow-hidden">
                 <div className="absolute inset-0 bg-blue-900/20 mix-blend-multiply"></div>
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="relative max-w-6xl mx-auto px-6 md:px-16 lg:px-24 text-center"
+                    className="relative max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24 text-center"
                 >
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6 font-serif tracking-wide">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tight" style={{letterSpacing: '-0.03em'}}>
                         {service.title}
                     </h1>
-                    <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto font-light leading-relaxed">
+                    <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto font-normal leading-relaxed">
                         {service.description}
                     </p>
                 </motion.div>
@@ -43,7 +43,7 @@ const ServiceDetail = () => {
 
             {/* Overview Section - Image Left, Text Right */}
             <section className="py-20 section-padding">
-                <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
                     <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
@@ -82,13 +82,13 @@ const ServiceDetail = () => {
 
             {/* Key Benefits - Grid */}
             <section className="py-20 bg-slate-50 section-padding">
-                <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Key Benefits</h2>
                         <div className="mx-auto w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-4"></div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                         {service.benefits.map((benefit, idx) => (
                             <motion.div
                                 key={idx}
@@ -113,7 +113,7 @@ const ServiceDetail = () => {
 
             {/* Our Process - Steps Left, Image Right */}
             <section className="py-24 section-padding bg-white">
-                <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Our Process</h2>
                         <div className="mx-auto w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-4"></div>
@@ -153,7 +153,7 @@ const ServiceDetail = () => {
                             transition={{ duration: 0.8 }}
                             className="w-full lg:w-1/2"
                         >
-                            <div className="relative h-full min-h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                            <div className="relative h-72 sm:h-full min-h-[300px] sm:min-h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                                 <img
                                     src={service.image}
                                     alt="Our Process"
@@ -171,14 +171,14 @@ const ServiceDetail = () => {
 
             {/* Deliverables - Grid */}
             <section className="py-20 bg-blue-50 section-padding">
-                <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Deliverables</h2>
                         <div className="mx-auto w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-4"></div>
                         <p className="text-slate-600 max-w-2xl mx-auto">Actionable data formats ready for your engineering teams.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         {service.deliverables.map((item, idx) => (
                             <motion.div
                                 key={idx}

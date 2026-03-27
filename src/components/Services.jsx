@@ -7,7 +7,7 @@ import { ChevronRight } from 'lucide-react';
 const Services = () => {
     return (
         <section id="services" className="our-services-section">
-            <div className="max-w-7xl mx-auto px-20 services-content">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 services-content">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -15,14 +15,14 @@ const Services = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-8"
                 >
-                    <h2 className="text-4xl font-serif font-bold text-slate-900 mb-2">Our Services</h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2" style={{letterSpacing: '-0.025em'}}>Our Services</h2>
                     <div className="mx-auto w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-4"></div>
                     <p className="text-slate-600 text-lg max-w-3xl mx-auto">
                         Advanced Precision diagnostics and inspection services for solar power plants and transmission-line assets.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     {siteConfig.services.map((service, index) => (
                         <motion.div
                             key={index}

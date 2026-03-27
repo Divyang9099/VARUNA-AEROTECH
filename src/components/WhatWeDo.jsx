@@ -4,7 +4,7 @@ import { siteConfig } from '../siteConfig';
 import { CheckCircle } from 'lucide-react';
 
 const WhatWeDo = () => (
-    <section id="about" className="topography-section py-24">
+    <section id="about" className="topography-section py-16 md:py-24">
         {/* Gradient Topography Layers (Anchored to the Left) */}
         <div className="topo-bg">
             <div className="topo-layer topo-layer-1"></div>
@@ -16,8 +16,8 @@ const WhatWeDo = () => (
             <div className="topo-layer topo-layer-7"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24 topography-content">
-            <div className="flex flex-col md:flex-row items-center gap-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24 topography-content">
+            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left Column: Content Workflow */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
@@ -26,7 +26,7 @@ const WhatWeDo = () => (
                     transition={{ duration: 0.8 }}
                     className="w-full md:w-1/2"
                 >
-                    <h2 className="text-4xl font-serif font-bold text-slate-900 mb-2">{siteConfig.whatWeDo.title}</h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2" style={{letterSpacing: '-0.025em'}}>{siteConfig.whatWeDo.title}</h2>
                     <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-8"></div>
 
                     <div className="space-y-8">

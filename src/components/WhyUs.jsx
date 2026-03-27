@@ -112,16 +112,15 @@ const WhyUs = () => {
                 )}
             </div>
 
-            <div className="varuna-content max-w-7xl mx-auto px-6">
+            <div className="varuna-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-4xl font-serif font-bold text-slate-900 mb-2"
-                    >
-                        Why we:"Our Varuna Edge"
+                        className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2" style={{letterSpacing: '-0.025em'}}>
+                        Why we: "Our Varuna Edge"
                     </motion.h2>
                     <div className="mx-auto w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-4"></div>
                     <motion.p
@@ -140,13 +139,13 @@ const WhyUs = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="flex flex-wrap justify-center gap-6"
+                    className="flex flex-wrap justify-center gap-4 sm:gap-6"
                 >
                     {siteConfig.whyUs.map((item, index) => (
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className="edge-card w-full md:w-72 flex flex-col items-center text-center p-6 rounded-3xl border-4 border-blue-200 hover:border-blue-600 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
+                            className="edge-card w-full sm:w-72 flex flex-col items-center text-center p-5 sm:p-6 rounded-3xl border-4 border-blue-200 hover:border-blue-600 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
                         >
                             <div className="w-16 h-16 rounded-full bg-blue-600 text-white border-2 border-transparent flex items-center justify-center mb-4 shadow-md shadow-blue-200 group-hover:bg-white group-hover:text-blue-600 group-hover:border-blue-600 transition-all duration-300">
                                 <item.icon className="w-8 h-8" />

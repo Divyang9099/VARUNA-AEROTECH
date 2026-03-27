@@ -6,8 +6,8 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 const Footer = () => (
     <footer id="contact" className="footer-section pt-20 pb-10 border-t border-slate-200 relative overflow-hidden">
         <div className="footer-bg-overlay absolute inset-0 z-0"></div>
-        <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12 md:mb-16">
 
                 {/* Column 1: Brand */}
                 <div className="space-y-6">
@@ -101,8 +101,8 @@ const Footer = () => (
                 </div>
             </div>
 
-            <div className="pt-8 border-t border-blue-900 flex flex-col md:flex-row justify-end items-center gap-4 text-blue-300 text-sm">
-                <div className="flex gap-6">
+            <div className="pt-8 border-t border-blue-900 flex flex-col sm:flex-row justify-end items-center gap-4 text-blue-300 text-sm">
+                <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
                     <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
                     <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>

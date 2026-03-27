@@ -10,7 +10,7 @@ const AboutUs = () => {
     return (
         <div id="about" className="overflow-x-hidden">
             {/* Full Width Who We Are Section - Light Airy Design */}
-            <section className="relative w-full py-20 md:py-32 bg-slate-50 overflow-hidden">
+            <section className="relative w-full py-14 md:py-32 bg-slate-50 overflow-hidden">
                 {/* Decorative Background - Flowing Blue Waves matching reference */}
                 <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none bg-white">
                     <svg className="absolute w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="none">
@@ -31,7 +31,7 @@ const AboutUs = () => {
                     </svg>
                 </div>
 
-                <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24 relative z-10 text-center">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -39,16 +39,16 @@ const AboutUs = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="mb-12">
-                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6">{aboutPage.whoWeAre.title}</h2>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-6" style={{letterSpacing: '-0.03em'}}>{aboutPage.whoWeAre.title}</h2>
                             <div className="w-24 h-1.5 bg-blue-600 rounded-full mx-auto"></div>
                         </div>
 
-                        <p className="text-xl text-slate-600 leading-relaxed mb-16 max-w-4xl mx-auto font-medium">
+                        <p className="text-base sm:text-xl text-slate-600 leading-relaxed mb-10 md:mb-16 max-w-4xl mx-auto font-medium">
                             {aboutPage.whoWeAre.description}
                         </p>
 
-                        <div className="bg-slate-900/5 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 mb-16">
-                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                        <div className="bg-slate-900/5 backdrop-blur-sm rounded-2xl p-5 sm:p-8 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 mb-10 md:mb-16">
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 sm:gap-x-12 sm:gap-y-8">
                                 {aboutPage.whoWeAre.bullets.map((item, idx) => (
                                     <li key={idx} className="flex gap-4 text-left">
                                         <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
@@ -77,10 +77,10 @@ const AboutUs = () => {
             </section>
 
             {/* Mission & Vision Section Wrapper */}
-            <section className="py-24 bg-white">
-                <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
+            <section className="py-14 md:py-24 bg-white">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
                     {/* Mission & Vision */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-14 md:mb-24">
                         {/* Mission Card */}
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
@@ -105,7 +105,7 @@ const AboutUs = () => {
                                     <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center mb-8 shadow-lg shadow-blue-200 group-hover:scale-110 group-hover:shadow-blue-300 transition-all duration-300 relative before:absolute before:inset-0 before:rounded-full before:border before:border-white/20 before:animate-pulse-slow">
                                         <Zap className="w-10 h-10" />
                                     </div>
-                                    <h3 className="text-3xl font-serif font-bold text-slate-900 mb-6 group-hover:text-blue-700 transition-colors">{aboutPage.mission.title}</h3>
+                                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6 group-hover:text-blue-700 transition-colors" style={{letterSpacing: '-0.02em'}}>{aboutPage.mission.title}</h3>
                                 </div>
                                 {aboutPage.mission.points ? (
                                     <ul className="text-left space-y-4 px-4 list-disc marker:text-blue-600">
@@ -147,7 +147,7 @@ const AboutUs = () => {
                                     <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center mb-8 shadow-lg shadow-blue-200 group-hover:scale-110 group-hover:shadow-blue-300 transition-all duration-300 relative before:absolute before:inset-0 before:rounded-full before:border before:border-white/20 before:animate-pulse-slow">
                                         <Users className="w-10 h-10" />
                                     </div>
-                                    <h3 className="text-3xl font-serif font-bold text-slate-900 mb-6 group-hover:text-blue-700 transition-colors">{aboutPage.vision.title}</h3>
+                                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6 group-hover:text-blue-700 transition-colors" style={{letterSpacing: '-0.02em'}}>{aboutPage.vision.title}</h3>
                                 </div>
                                 <p className="text-slate-700 font-medium leading-relaxed text-lg max-w-lg mx-auto">
                                     {aboutPage.vision.text}
@@ -159,7 +159,7 @@ const AboutUs = () => {
             </section>
 
             {/* Core Values Section - Light Airy Design */}
-            <section className="relative w-full py-24 bg-slate-50 overflow-hidden">
+            <section className="relative w-full py-14 md:py-24 bg-slate-50 overflow-hidden">
                 {/* Decorative Background - Flowing Blue Waves matching reference */}
                 <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none bg-white">
                     <svg className="absolute w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="none">
@@ -180,7 +180,7 @@ const AboutUs = () => {
                     </svg>
                 </div>
 
-                <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
                     {/* Core Values */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -189,7 +189,7 @@ const AboutUs = () => {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-16 relative z-10"
                     >
-                        <h2 className="text-4xl font-serif font-bold text-slate-900 mb-2">Our Core Values</h2>
+                        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2" style={{letterSpacing: '-0.025em'}}>Our Core Values</h2>
                         <div className="mx-auto w-24 h-1.5 bg-blue-600 rounded-full mb-4"></div>
                         <p className="text-slate-600 text-lg max-w-2xl mx-auto">
                             The principles that drive everything we do at Varuna Aerotech.
@@ -211,7 +211,7 @@ const AboutUs = () => {
                         }}
                         className="relative z-10"
                     >
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 relative z-10">
                             {aboutPage.coreValues.map((value, index) => (
                                 <motion.div
                                     key={index}

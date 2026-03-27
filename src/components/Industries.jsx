@@ -6,16 +6,15 @@ import { motion } from 'framer-motion';
 
 const Industries = () => {
     return (
-        <section id="industries" className="section-padding bg-white py-24">
-            <div className="max-w-7xl mx-auto px-6">
+        <section id="industries" className="section-padding bg-white py-14 md:py-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-4xl font-serif font-bold text-slate-900 mb-2"
-                    >
+                        className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2" style={{letterSpacing: '-0.025em'}}>
                         Industries We Serve
                     </motion.h2>
                     <div className="mx-auto w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-4"></div>
@@ -42,8 +41,7 @@ const Industries = () => {
                             }
                         }
                     }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {siteConfig.industries.map((industry, index) => (
                         <motion.div
                             key={index}
@@ -60,7 +58,7 @@ const Industries = () => {
                                 aria-label={`Learn more about ${industry.title}`}
                             />
 
-                            <div className="relative h-64 overflow-hidden">
+                            <div className="relative h-48 sm:h-64 overflow-hidden">
                                 <img
                                     src={industry.image}
                                     alt={industry.title}

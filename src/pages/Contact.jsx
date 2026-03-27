@@ -47,22 +47,22 @@ const Contact = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 py-16 pt-32">
-            <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
+        <div className="min-h-screen bg-gray-50 py-12 pt-24 sm:pt-32">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Contact Us</h1>
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2" style={{letterSpacing: '-0.03em'}}>Contact Us</h1>
                     <div className="mx-auto w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-4"></div>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         Ready to optimize your renewable energy assets? Get in touch with our expert team.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
                     {/* Left Column: Contact Info */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
