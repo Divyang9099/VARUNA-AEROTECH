@@ -62,27 +62,27 @@ const Footer = () => (
 
                 {/* Column 4: Contact */}
                 <div>
-                    <h4 className="text-lg font-bold text-white mb-6">Contact</h4>
-                    <ul className="space-y-4 text-sm">
+                    <h4 className="text-lg font-bold text-slate-900 mb-6">Contact</h4>
+                    <ul className="space-y-4 text-sm font-bold text-slate-900">
                         <li className="flex items-start gap-3">
-                            <MapPin className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+                            <MapPin className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
                             <a
                                 href="https://maps.app.goo.gl/nf3SNA5fWWN4oGuF9"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-100 max-w-[200px] hover:text-white transition-colors"
+                                className="text-slate-900 hover:text-blue-700 transition-colors max-w-[200px]"
                             >
                                 {siteConfig.contact.address}
                             </a>
                         </li>
                         <li className="flex items-center gap-3">
-                            <Phone className="w-5 h-5 text-blue-400 shrink-0" />
+                            <Phone className="w-5 h-5 text-blue-700 shrink-0" />
                             <div className="flex flex-col">
                                 {siteConfig.contact.phones.map((phone, i) => (
                                     <a
                                         key={i}
                                         href={`tel:${phone.replace(/\s+/g, '')}`}
-                                        className="text-blue-100 hover:text-white transition-colors"
+                                        className="text-slate-900 hover:text-blue-700 transition-colors block"
                                     >
                                         {phone}
                                     </a>
@@ -90,10 +90,10 @@ const Footer = () => (
                             </div>
                         </li>
                         <li className="flex items-center gap-3">
-                            <Mail className="w-5 h-5 text-blue-400 shrink-0" />
+                            <Mail className="w-5 h-5 text-blue-700 shrink-0" />
                             <div className="flex flex-col">
                                 {siteConfig.contact.emails.map((email, i) => (
-                                    <a key={i} href={`mailto:${email}`} className="text-blue-100 hover:text-white transition-colors">{email}</a>
+                                    <a key={i} href={`mailto:${email}`} className="text-slate-900 hover:text-blue-700 transition-colors block">{email}</a>
                                 ))}
                             </div>
                         </li>

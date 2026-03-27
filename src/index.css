@@ -573,8 +573,8 @@ p, span, a, li, label, input, textarea, button {
 }
 
 .footer-section h4 {
-  color: #0f172a !important;
-  font-weight: 700 !important;
+  color: #000000 !important;
+  font-weight: 900 !important;
   letter-spacing: -0.02em;
 }
 
@@ -582,8 +582,8 @@ p, span, a, li, label, input, textarea, button {
 .footer-section li,
 .footer-section a,
 .footer-section span {
-  color: #334155 !important;
-  font-weight: 500 !important;
+  color: #000000 !important;
+  font-weight: 900 !important;
 }
 
 .footer-section a:hover {

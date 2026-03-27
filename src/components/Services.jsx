@@ -22,7 +22,7 @@ const Services = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
                     {siteConfig.services.map((service, index) => (
                         <motion.div
                             key={index}

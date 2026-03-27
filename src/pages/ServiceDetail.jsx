@@ -88,7 +88,7 @@ const ServiceDetail = () => {
                         <div className="mx-auto w-24 h-1.5 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mb-4"></div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
                         {service.benefits.map((benefit, idx) => (
                             <motion.div
                                 key={idx}
@@ -96,13 +96,13 @@ const ServiceDetail = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 hover:-translate-y-1 transition-all duration-300"
+                                className="bg-white p-4 sm:p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col items-start"
                             >
-                                <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mb-6">
-                                    <CheckCircle className="w-6 h-6" />
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-3 sm:mb-6">
+                                    <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" />
                                 </div>
-                                <h3 className="text-xl font-bold text-slate-900 mb-3">{benefit.title}</h3>
-                                <p className="text-slate-600 leading-relaxed">
+                                <h3 className="text-base sm:text-xl font-bold text-slate-900 mb-1 sm:mb-3 leading-tight">{benefit.title}</h3>
+                                <p className="text-xs sm:text-base text-slate-600 leading-snug sm:leading-relaxed">
                                     {benefit.description}
                                 </p>
                             </motion.div>
@@ -178,21 +178,21 @@ const ServiceDetail = () => {
                         <p className="text-slate-600 max-w-2xl mx-auto">Actionable data formats ready for your engineering teams.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
                         {service.deliverables.map((item, idx) => (
                             <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="bg-white p-6 rounded-xl border border-blue-100 hover:shadow-lg hover:border-blue-300 transition-all duration-300 group"
+                                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                                className="bg-white p-4 sm:p-6 rounded-xl border border-blue-100 hover:border-blue-300 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-start"
                             >
-                                <div className="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                    <FileText className="w-5 h-5" />
+                                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-2 sm:mb-4 shrink-0">
+                                    <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </div>
-                                <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
-                                <p className="text-sm text-slate-600 mb-4 h-10">{item.description}</p>
+                                <h3 className="text-sm sm:text-lg font-bold text-slate-800 mb-1 sm:mb-3 leading-tight">{item.title}</h3>
+                                <p className="text-slate-600 text-[11px] sm:text-sm leading-snug sm:leading-relaxed">{item.description}</p>
                             </motion.div>
                         ))}
                     </div>

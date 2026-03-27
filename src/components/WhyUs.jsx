@@ -139,19 +139,19 @@ const WhyUs = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="flex flex-wrap justify-center gap-4 sm:gap-6"
+                    className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 justify-items-center w-full"
                 >
                     {siteConfig.whyUs.map((item, index) => (
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className="edge-card w-full sm:w-72 flex flex-col items-center text-center p-5 sm:p-6 rounded-3xl border-4 border-blue-200 hover:border-blue-600 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
+                            className="edge-card w-full flex flex-col items-center text-center p-3 sm:p-5 lg:p-6 rounded-[1.25rem] sm:rounded-3xl border-[3px] sm:border-4 border-blue-200 hover:border-blue-600 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
                         >
-                            <div className="w-16 h-16 rounded-full bg-blue-600 text-white border-2 border-transparent flex items-center justify-center mb-4 shadow-md shadow-blue-200 group-hover:bg-white group-hover:text-blue-600 group-hover:border-blue-600 transition-all duration-300">
-                                <item.icon className="w-8 h-8" />
+                            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-600 text-white border-2 border-transparent flex items-center justify-center mb-3 sm:mb-4 shadow-md shadow-blue-200 group-hover:bg-white group-hover:text-blue-600 group-hover:border-blue-600 transition-all duration-300 mx-auto">
+                                <item.icon className="w-6 h-6 sm:w-8 sm:h-8" />
                             </div>
-                            <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">{item.title}</h3>
-                            <p className="text-slate-600 leading-relaxed text-sm">
+                            <h3 className="text-[13px] sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2 leading-tight px-1">{item.title}</h3>
+                            <p className="text-slate-600 leading-snug sm:leading-relaxed text-[11px] sm:text-sm px-1 mb-1">
                                 {item.description}
                             </p>
                         </motion.div>

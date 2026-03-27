@@ -80,18 +80,18 @@ const AboutUs = () => {
             <section className="py-14 md:py-24 bg-white">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
                     {/* Mission & Vision */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-14 md:mb-24">
+                    <div className="grid grid-cols-2 gap-3 sm:gap-8 mb-14 md:mb-24">
                         {/* Mission Card */}
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="relative overflow-hidden rounded-[2.5rem] flex flex-col h-full bg-gradient-to-b from-slate-50 to-white shadow-xl border border-slate-200 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group p-10 text-center"
+                            className="relative overflow-hidden rounded-2xl sm:rounded-[2.5rem] flex flex-col h-full bg-gradient-to-b from-slate-50 to-white shadow-xl border border-slate-200 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group p-4 sm:p-10 text-center"
                         >
                             {/* Premium Central Background Watermark */}
                             <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-10 group-hover:opacity-15 transition-opacity duration-500">
-                                <svg className="w-[28rem] h-[28rem] text-blue-900" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                <svg className="w-[15rem] h-[15rem] sm:w-[28rem] sm:h-[28rem] text-blue-900" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5">
                                     <circle cx="100" cy="100" r="80" strokeDasharray="4 4" />
                                     <circle cx="100" cy="100" r="60" />
                                     <circle cx="100" cy="100" r="40" strokeDasharray="2 2" />
@@ -102,21 +102,21 @@ const AboutUs = () => {
 
                             <div className="relative z-10 flex flex-col h-full items-center">
                                 <div className="flex flex-col items-center">
-                                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center mb-8 shadow-lg shadow-blue-200 group-hover:scale-110 group-hover:shadow-blue-300 transition-all duration-300 relative before:absolute before:inset-0 before:rounded-full before:border before:border-white/20 before:animate-pulse-slow">
-                                        <Zap className="w-10 h-10" />
+                                    <div className="w-12 h-12 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center mb-3 sm:mb-8 shadow-lg shadow-blue-200 group-hover:scale-110 group-hover:shadow-blue-300 transition-all duration-300 relative before:absolute before:inset-0 before:rounded-full before:border before:border-white/20 before:animate-pulse-slow shrink-0">
+                                        <Zap className="w-5 h-5 sm:w-10 sm:h-10" />
                                     </div>
-                                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6 group-hover:text-blue-700 transition-colors" style={{letterSpacing: '-0.02em'}}>{aboutPage.mission.title}</h3>
+                                    <h3 className="text-base sm:text-3xl font-bold text-slate-900 mb-2 sm:mb-6 group-hover:text-blue-700 transition-colors leading-tight" style={{letterSpacing: '-0.02em'}}>{aboutPage.mission.title}</h3>
                                 </div>
                                 {aboutPage.mission.points ? (
-                                    <ul className="text-left space-y-4 px-4 list-disc marker:text-blue-600">
+                                    <ul className="text-left space-y-2 sm:space-y-4 px-1 sm:px-4 list-disc marker:text-blue-600">
                                         {aboutPage.mission.points.map((point, index) => (
-                                            <li key={index} className="text-slate-700 font-medium leading-relaxed text-lg">
+                                            <li key={index} className="text-slate-700 font-medium leading-snug sm:leading-relaxed text-[10px] sm:text-lg">
                                                 {point}
                                             </li>
                                         ))}
                                     </ul>
                                 ) : (
-                                    <p className="text-slate-700 font-medium leading-relaxed text-lg max-w-lg mx-auto">
+                                    <p className="text-slate-700 font-medium leading-snug sm:leading-relaxed text-[11px] sm:text-lg max-w-lg mx-auto px-1 sm:px-0">
                                         {aboutPage.mission.text}
                                     </p>
                                 )}
@@ -129,11 +129,11 @@ const AboutUs = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="relative overflow-hidden rounded-[2.5rem] flex flex-col h-full bg-gradient-to-b from-slate-50 to-white shadow-xl border border-slate-200 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group p-10 text-center"
+                            className="relative overflow-hidden rounded-2xl sm:rounded-[2.5rem] flex flex-col h-full bg-gradient-to-b from-slate-50 to-white shadow-xl border border-slate-200 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group p-4 sm:p-10 text-center"
                         >
                             {/* Premium Central Background Watermark */}
                             <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-10 group-hover:opacity-15 transition-opacity duration-500">
-                                <svg className="w-[28rem] h-[28rem] text-blue-900" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                <svg className="w-[15rem] h-[15rem] sm:w-[28rem] sm:h-[28rem] text-blue-900" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5">
                                     <circle cx="100" cy="100" r="80" strokeDasharray="4 4" />
                                     <circle cx="100" cy="100" r="60" />
                                     <circle cx="100" cy="100" r="40" strokeDasharray="2 2" />
@@ -144,12 +144,12 @@ const AboutUs = () => {
 
                             <div className="relative z-10 flex flex-col h-full items-center">
                                 <div className="flex flex-col items-center">
-                                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center mb-8 shadow-lg shadow-blue-200 group-hover:scale-110 group-hover:shadow-blue-300 transition-all duration-300 relative before:absolute before:inset-0 before:rounded-full before:border before:border-white/20 before:animate-pulse-slow">
-                                        <Users className="w-10 h-10" />
+                                    <div className="w-12 h-12 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center mb-3 sm:mb-8 shadow-lg shadow-blue-200 group-hover:scale-110 group-hover:shadow-blue-300 transition-all duration-300 relative before:absolute before:inset-0 before:rounded-full before:border before:border-white/20 before:animate-pulse-slow shrink-0">
+                                        <Users className="w-5 h-5 sm:w-10 sm:h-10" />
                                     </div>
-                                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6 group-hover:text-blue-700 transition-colors" style={{letterSpacing: '-0.02em'}}>{aboutPage.vision.title}</h3>
+                                    <h3 className="text-base sm:text-3xl font-bold text-slate-900 mb-2 sm:mb-6 group-hover:text-blue-700 transition-colors leading-tight" style={{letterSpacing: '-0.02em'}}>{aboutPage.vision.title}</h3>
                                 </div>
-                                <p className="text-slate-700 font-medium leading-relaxed text-lg max-w-lg mx-auto">
+                                <p className="text-slate-700 font-medium leading-snug sm:leading-relaxed text-[11px] sm:text-lg max-w-lg mx-auto">
                                     {aboutPage.vision.text}
                                 </p>
                             </div>
@@ -211,7 +211,7 @@ const AboutUs = () => {
                         }}
                         className="relative z-10"
                     >
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 relative z-10">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 relative z-10">
                             {aboutPage.coreValues.map((value, index) => (
                                 <motion.div
                                     key={index}
@@ -223,22 +223,22 @@ const AboutUs = () => {
                                 >
                                     {/* Glassmorphic Card */}
                                     <div
-                                        className="relative overflow-hidden flex flex-col items-center text-center p-8 h-full transition-all duration-500 group-hover:scale-105 bg-slate-800/5 backdrop-blur-sm border border-white/20 shadow-lg hover:shadow-2xl rounded-[1.5rem]"
+                                        className="relative overflow-hidden flex flex-col items-center text-center p-4 sm:p-8 h-full transition-all duration-500 group-hover:scale-105 bg-slate-800/5 backdrop-blur-sm border border-white/20 shadow-lg hover:shadow-2xl rounded-2xl sm:rounded-[1.5rem]"
                                     >
                                         {/* Icon Container */}
                                         <div
-                                            className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-200"
+                                            className="w-10 h-10 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mb-2 sm:mb-6 transition-all duration-300 group-hover:scale-110 bg-gradient-to-br from-blue-500 to-blue-600 shadow-sm sm:shadow-lg shadow-blue-200 shrink-0"
                                         >
-                                            <value.icon className="w-8 h-8 text-white" />
+                                            <value.icon className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
                                         </div>
 
                                         {/* Title */}
-                                        <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                                        <h3 className="text-sm sm:text-xl font-bold text-slate-900 mb-1 sm:mb-3 leading-tight">
                                             {value.title}
                                         </h3>
 
                                         {/* Description */}
-                                        <p className="text-slate-600 text-sm leading-relaxed">
+                                        <p className="text-slate-600 leading-snug sm:leading-relaxed font-medium text-[11px] sm:text-base">
                                             {value.description}
                                         </p>
 
