@@ -597,3 +597,60 @@ p, span, a, li, label, input, textarea, button {
 .footer-section .text-blue-400 {
   color: #0284c7 !important;
 }
+
+/* Brand Loader Styles */
+.brand-loader-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  z-index: 9999;
+}
+
+.brand-loader-overlay {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.brand-loader-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-loader-emblem-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+}
+
+.brand-loader-ring {
+  position: absolute;
+  inset: 0;
+  border: 4px solid rgba(2, 132, 199, 0.1); /* light blue track */
+  border-top-color: #0284c7;  /* dark blue spinner */
+  border-radius: 50%;
+  animation: brand-loader-spin 1.5s linear infinite reverse;
+}
+
+.brand-loader-emblem {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  animation: brand-loader-pulse 2s ease-in-out infinite;
+}
+
+@keyframes brand-loader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes brand-loader-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.85); opacity: 0.8; }
+}

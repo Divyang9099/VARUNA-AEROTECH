@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -14,6 +14,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const FeatureDetail = lazy(() => import('./pages/FeatureDetail'));
 
 function App() {
+  const [initLoading, setInitLoading] = useState(true);
   useEffect(() => {
     // Warm up the backend as soon as the app loads to avoid delays on the contact form
     const warmUpBackend = async () => {
@@ -25,12 +26,19 @@ function App() {
       }
     };
     warmUpBackend();
+
+    const timer = setTimeout(() => {
+      setInitLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col overflow-x-hidden">
+      {initLoading && <Loader />}
+      <div className={`min-h-screen bg-white font-sans text-slate-900 flex flex-col overflow-x-hidden ${initLoading ? 'hidden' : ''}`}>
         <Navbar />
         <main className="flex-grow relative">
           <Suspense fallback={<Loader />}>
