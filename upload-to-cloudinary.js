@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 // Cloudinary Configuration
 cloudinary.config({
-    cloud_name: 'sdfsfgv,
+    cloud_name: 's',
     api_key: 'xyz',
     api_secret: 'you api secrete'
 });

@@ -6,7 +6,8 @@ import { siteConfig } from '../siteConfig';
 
 const heroSlides = [{
     id: 1,
-    // Backup CDN: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029624/varuna-aerotech/hero_solar_latest.jpg"
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937095/varuna-aerotech/videos/solar.mp4",
+    position: "bottom-left",
     content: {
         mainTitle: siteConfig.hero.title,
         subTitle: "On Demand Aerial Data Capturing",
@@ -19,7 +20,8 @@ const heroSlides = [{
 },
 {
     id: 2,
-    // Backup CDN: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029634/varuna-aerotech/hero_wind_new.jpg"
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937116/varuna-aerotech/videos/windmill.mp4",
+    position: "bottom-left",
     content: {
         mainTitle: "Renewable Energy",
         subTitle: "",
@@ -32,7 +34,8 @@ const heroSlides = [{
 },
 {
     id: 3,
-    // Backup CDN: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop"
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937150/varuna-aerotech/videos/powerline.mp4",
+    position: "bottom-left",
     content: {
         mainTitle: "Power Sector",
         subTitle: "",
@@ -44,7 +47,9 @@ const heroSlides = [{
 },
 {
     id: 4,
-    // Backup CDN: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029616/varuna-aerotech/hero_industrial_hd.jpg"
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937177/varuna-aerotech/videos/industrial.mp4",
+    position: "top-left",
+    variant: "minimal",
     content: {
         mainTitle: "Industrial | Utility",
         subTitle: "",
@@ -57,7 +62,9 @@ const heroSlides = [{
 },
 {
     id: 5,
-    // Backup CDN: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029619/varuna-aerotech/hero_infrastructure_new.jpg"
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937230/varuna-aerotech/videos/topology.mp4",
+    position: "bottom-right",
+    variant: "minimal",
     content: {
         mainTitle: "Infrastructure | Land",
         subTitle: "",
@@ -78,27 +85,61 @@ const Hero = () => {
         }, 5000); // 5 seconds interval
         return () => clearInterval(timer);
     }, []);
+    
+    // Unified clear font style over all backgrounds (matches slide 1)
+    const titleColor = "text-white";
+    const titleShadow = "0px 3px 12px rgba(0,0,0,0.8)";
+    
+    const subtitleColor = "text-white/95";
+    const subtitleShadow = "0px 2px 8px rgba(0,0,0,0.7)";
+    
+    const linkColor = "text-white/95 hover:text-white";
+    const featureShadow = "0px 2px 6px rgba(0,0,0,0.8)";
+
+    const pos = heroSlides[currentSlide].position || "bottom-left";
+    const isMinimal = heroSlides[currentSlide].variant === "minimal";
+    
+    // Dynamic Typographic Sizing
+    const titleSize = isMinimal ? "text-3xl sm:text-4xl md:text-5xl font-semibold tracking-normal" : "text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight";
+    const subtitleSize = isMinimal ? "text-base sm:text-lg md:text-xl font-medium" : "text-lg sm:text-xl md:text-2xl font-medium";
+    const featureSize = isMinimal ? "text-sm sm:text-base font-medium" : "text-base sm:text-lg font-semibold";
+    const iconSize = isMinimal ? "w-4 h-4 sm:w-5 sm:h-5" : "w-5 h-5 sm:w-6 sm:h-6";
+    
+    const getPosClasses = (p) => {
+        switch(p) {
+            case 'top-left': return 'top-32 left-4 sm:left-10 lg:left-20 items-start text-left';
+            case 'top-right': return 'top-32 right-4 sm:right-10 lg:right-20 items-end text-right';
+            case 'bottom-right': return 'bottom-20 sm:bottom-28 right-4 sm:right-10 lg:right-20 items-end text-right';
+            case 'bottom-left':
+            default: return 'bottom-20 sm:bottom-28 left-4 sm:left-10 lg:left-20 items-start text-left';
+        }
+    };
 
     return (
-        <section className="relative h-screen min-h-[500px] flex items-end overflow-hidden bg-slate-900">
-            {/* Background Video */}
-            <div className="absolute inset-0 z-0 w-full h-full">
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                >
-                    <source src="/hero.mp4" type="video/mp4" />
-                </video>
-                {/* Deeper gradient overlay for maximum text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
+        <section className="relative h-screen min-h-[500px] overflow-hidden bg-slate-900">
+            {/* Background Videos with Crossfade Transition */}
+            <div className="absolute inset-0 z-0 w-full h-full bg-slate-900">
+                {heroSlides.map((slide, index) => (
+                    <video
+                        key={slide.id}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+                    >
+                        <source src={slide.video} type="video/mp4" />
+                    </video>
+                ))}
+                {/* Ultra-soft edge-only gradient to retain max video quality */}
+                <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+                {/* Optional dark gradient edge for top right text visibility */}
+                <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
             </div>
 
-            {/* Content Wrapper aligned to Bottom Left */}
-            <div className="relative z-10 w-full pb-20 sm:pb-28 px-4 sm:px-10 lg:px-20 max-w-7xl mx-auto">
-                <div className="max-w-2xl">
+            {/* Dynamic Content Wrapper */}
+            <div className="absolute inset-0 z-10 w-full pointer-events-none">
+                <div className="relative w-full h-full max-w-7xl mx-auto">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentSlide}
@@ -106,26 +147,26 @@ const Hero = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -15 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
-                            className="text-white"
+                            className={`absolute max-w-2xl pointer-events-auto flex flex-col transition-all duration-700 ${getPosClasses(pos)}`}
                         >
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-3 sm:mb-5 text-white drop-shadow-xl" style={{ textShadow: "0px 2px 8px rgba(0,0,0,0.5)" }}>
+                            <h1 className={`${titleSize} mb-3 sm:mb-5 drop-shadow-xl ${titleColor} transition-all duration-700`} style={{ textShadow: titleShadow }}>
                                 {heroSlides[currentSlide].content.mainTitle}
                             </h1>
                             {heroSlides[currentSlide].content.subTitle && (
-                                <p className="text-lg sm:text-xl md:text-2xl text-white/95 mb-6 sm:mb-8 font-medium tracking-wide drop-shadow-lg" style={{ textShadow: "0px 2px 6px rgba(0,0,0,0.5)" }}>
+                                <p className={`${subtitleSize} mb-6 sm:mb-8 tracking-wide drop-shadow-lg ${subtitleColor} transition-all duration-700`} style={{ textShadow: subtitleShadow }}>
                                     {heroSlides[currentSlide].content.subTitle}
                                 </p>
                             )}
                             
-                            <div className="flex flex-col gap-4 items-start mt-2">
+                            <div className={`flex flex-col gap-4 mt-2 ${pos.includes('right') ? 'items-end' : 'items-start'}`}>
                                 {heroSlides[currentSlide].content.features.map((feature, index) => (
                                     <Link
                                         to={`/features/${feature.id}`}
                                         key={index}
-                                        className="flex items-center gap-4 px-0 py-1 text-white/90 hover:text-white transition-colors duration-300 group"
+                                        className={`flex items-center gap-4 px-0 py-1 transition-colors duration-300 group ${linkColor} ${pos.includes('right') ? 'flex-row-reverse' : ''}`}
                                     >
-                                        <feature.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${feature.color} opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all flex-shrink-0 drop-shadow-md`} />
-                                        <span className="font-semibold text-base sm:text-lg tracking-wide drop-shadow-md" style={{ textShadow: "0px 1px 4px rgba(0,0,0,0.6)" }}>{feature.label}</span>
+                                        <feature.icon className={`${iconSize} ${feature.color} opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all flex-shrink-0 drop-shadow-md`} />
+                                        <span className={`${featureSize} tracking-wide drop-shadow-md transition-all duration-700`} style={{ textShadow: featureShadow }}>{feature.label}</span>
                                     </Link>
                                 ))}
                             </div>
