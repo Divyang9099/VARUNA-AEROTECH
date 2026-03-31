@@ -6,9 +6,7 @@ import { siteConfig } from '../siteConfig';
 
 const heroSlides = [{
     id: 1,
-    // Keep existing image/color props
-    image: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029624/varuna-aerotech/hero_solar_latest.jpg",
-    color: "from-blue-900/80 to-slate-900/80",
+    // Backup CDN: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029624/varuna-aerotech/hero_solar_latest.jpg"
     content: {
         mainTitle: siteConfig.hero.title,
         subTitle: "On Demand Aerial Data Capturing",
@@ -21,8 +19,7 @@ const heroSlides = [{
 },
 {
     id: 2,
-    image: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029634/varuna-aerotech/hero_wind_new.jpg",
-    color: "from-emerald-900/80 to-slate-900/80",
+    // Backup CDN: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029634/varuna-aerotech/hero_wind_new.jpg"
     content: {
         mainTitle: "Renewable Energy",
         subTitle: "",
@@ -35,8 +32,7 @@ const heroSlides = [{
 },
 {
     id: 3,
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop",
-    color: "from-slate-900/80 to-gray-900/80",
+    // Backup CDN: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop"
     content: {
         mainTitle: "Power Sector",
         subTitle: "",
@@ -48,8 +44,7 @@ const heroSlides = [{
 },
 {
     id: 4,
-    image: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029616/varuna-aerotech/hero_industrial_hd.jpg",
-    color: "from-cyan-900/80 to-slate-900/80",
+    // Backup CDN: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029616/varuna-aerotech/hero_industrial_hd.jpg"
     content: {
         mainTitle: "Industrial | Utility",
         subTitle: "",
@@ -62,8 +57,7 @@ const heroSlides = [{
 },
 {
     id: 5,
-    image: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029619/varuna-aerotech/hero_infrastructure_new.jpg",
-    color: "from-indigo-900/80 to-slate-900/80",
+    // Backup CDN: "https://res.cloudinary.com/ddsjqtxik/image/upload/f_auto,q_auto/v1770029619/varuna-aerotech/hero_infrastructure_new.jpg"
     content: {
         mainTitle: "Infrastructure | Land",
         subTitle: "",
@@ -81,74 +75,57 @@ const Hero = () => {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-        }, 10000);
+        }, 5000); // 5 seconds interval
         return () => clearInterval(timer);
     }, []);
 
     return (
-        <section className="relative h-screen min-h-[500px] flex items-center overflow-hidden bg-slate-900">
-
-            {/* Background Slider */}
-            {/* Background Slider */}
-            <AnimatePresence>
-                <motion.div
-                    key={currentSlide}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
-                    className="absolute inset-0 z-0"
+        <section className="relative h-screen min-h-[500px] flex items-end overflow-hidden bg-slate-900">
+            {/* Background Video */}
+            <div className="absolute inset-0 z-0 w-full h-full">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
                 >
-                    {heroSlides[currentSlide].images ? (
-                        <div className="flex w-full h-full">
-                            <div
-                                className="w-1/2 h-full bg-cover bg-center"
-                                style={{ backgroundImage: `url(${heroSlides[currentSlide].images[0]})` }}
-                            />
-                            <div
-                                className="w-1/2 h-full bg-cover bg-center"
-                                style={{ backgroundImage: `url(${heroSlides[currentSlide].images[1]})` }}
-                            />
-                        </div>
-                    ) : (
-                        <div
-                            className="absolute inset-0 bg-cover bg-center"
-                            style={{ backgroundImage: `url(${heroSlides[currentSlide].image})` }}
-                        />
-                    )}
-                </motion.div>
-            </AnimatePresence>
+                    <source src="/hero.mp4" type="video/mp4" />
+                </video>
+                {/* Deeper gradient overlay for maximum text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
+            </div>
 
-            {/* Static Overlay - Darken background for white text visibility (like reference image 2) */}
-            <div className="absolute inset-0 z-0 bg-black/40" />
-
-            {/* Content */}
-            <div className="relative z-10 container max-w-7xl mx-auto px-4 sm:px-6 pt-20">
-                <div className="max-w-4xl text-white">
+            {/* Content Wrapper aligned to Bottom Left */}
+            <div className="relative z-10 w-full pb-20 sm:pb-28 px-4 sm:px-10 lg:px-20 max-w-7xl mx-auto">
+                <div className="max-w-2xl">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentSlide}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.5 }}
-                            className="animate-none"
+                            exit={{ opacity: 0, y: -15 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            className="text-white"
                         >
-                            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight mb-3 md:mb-6 text-white drop-shadow-lg" style={{fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.03em'}}>
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-3 sm:mb-5 text-white drop-shadow-xl" style={{ textShadow: "0px 2px 8px rgba(0,0,0,0.5)" }}>
                                 {heroSlides[currentSlide].content.mainTitle}
                             </h1>
-                            <p className="text-base sm:text-xl md:text-3xl text-white/90 mb-5 font-semibold drop-shadow-md">
-                                {heroSlides[currentSlide].content.subTitle}
-                            </p>
-                            <div className="flex flex-col gap-2 mb-6 md:mb-10 items-start">
+                            {heroSlides[currentSlide].content.subTitle && (
+                                <p className="text-lg sm:text-xl md:text-2xl text-white/95 mb-6 sm:mb-8 font-medium tracking-wide drop-shadow-lg" style={{ textShadow: "0px 2px 6px rgba(0,0,0,0.5)" }}>
+                                    {heroSlides[currentSlide].content.subTitle}
+                                </p>
+                            )}
+                            
+                            <div className="flex flex-col gap-4 items-start mt-2">
                                 {heroSlides[currentSlide].content.features.map((feature, index) => (
                                     <Link
                                         to={`/features/${feature.id}`}
                                         key={index}
-                                        className="flex items-center gap-3 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 group"
+                                        className="flex items-center gap-4 px-0 py-1 text-white/90 hover:text-white transition-colors duration-300 group"
                                     >
-                                        <feature.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${feature.color} group-hover:scale-110 transition-transform flex-shrink-0`} />
-                                        <span className="font-semibold text-sm sm:text-base tracking-wide">{feature.label}</span>
+                                        <feature.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${feature.color} opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all flex-shrink-0 drop-shadow-md`} />
+                                        <span className="font-semibold text-base sm:text-lg tracking-wide drop-shadow-md" style={{ textShadow: "0px 1px 4px rgba(0,0,0,0.6)" }}>{feature.label}</span>
                                     </Link>
                                 ))}
                             </div>
@@ -157,21 +134,19 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="absolute bottom-6 right-4 sm:bottom-10 sm:right-10 z-20 flex items-center gap-4 text-white">
-                <div className="flex gap-2">
-                    {heroSlides.map((_, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => setCurrentSlide(idx)}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentSlide ? 'bg-white w-12' : 'bg-white/40 w-6 hover:bg-white/60'
-                                }`}
-                            aria-label={`Go to slide ${idx + 1}`}
-                        />
-                    ))}
-                </div>
+            {/* Slide Indicators on Bottom Left */}
+            <div className="absolute bottom-6 left-4 sm:left-10 lg:left-20 z-20 flex items-center gap-3 text-white">
+                {heroSlides.map((_, idx) => (
+                    <button
+                        key={idx}
+                        onClick={() => setCurrentSlide(idx)}
+                        className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentSlide ? 'bg-white w-12' : 'bg-white/40 w-5 hover:bg-white/70'
+                            } shadow-sm`}
+                        aria-label={`Go to slide ${idx + 1}`}
+                    />
+                ))}
             </div>
-
-        </section >
+        </section>
     );
 };
 

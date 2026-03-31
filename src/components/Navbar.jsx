@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { siteConfig } from '../siteConfig';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -8,34 +8,53 @@ const Navbar = () => {
     const [activeLink, setActiveLink] = useState("Home");
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(null);
-    const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(null); // Added for hybrid hover/click support
+    const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(null); 
+    const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
     const toggleMobileDropdown = (label) => {
         setMobileDropdownOpen(mobileDropdownOpen === label ? null : label);
     };
 
-    // Handle desktop touch/click interactions
     const handleDesktopClick = (e, item) => {
-        if (item.dropdown) {
-            // If strictly a touch device or user wants to toggle
-            // We can prevent navigation on first click if menu isn't open
-            // But relying on state:
-            if (desktopDropdownOpen !== item.label) {
-                e.preventDefault();
-                setDesktopDropdownOpen(item.label);
-            }
-            // If already open, let it navigate (if it's a link) or do nothing
+        if (item.dropdown && desktopDropdownOpen !== item.label) {
+            e.preventDefault();
+            setDesktopDropdownOpen(item.label);
         }
     };
 
+    const isHome = location.pathname === '/';
+    const isTransparent = isHome && !scrolled && !isMobileMenuOpen;
+
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
-            <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isTransparent ? 'bg-transparent py-2' : 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm py-1'}`}>
+            {/* Cinematic white glow behind logo when transparent */}
+            <div 
+                className={`absolute top-0 left-0 w-72 h-32 bg-white/70 blur-[50px] rounded-full -translate-x-10 -translate-y-10 transition-opacity duration-700 pointer-events-none ${isTransparent ? 'opacity-100' : 'opacity-0'}`} 
+            />
+            
+            <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3 relative z-10">
                 <div className="flex items-center gap-3">
-                    <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
-                        <img src={siteConfig.logo} alt={siteConfig.name} className="h-10 md:h-12 w-auto" />
+                    <Link 
+                        to="/" 
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="transition-all duration-300"
+                    >
+                        <img 
+                            src={siteConfig.logo} 
+                            alt={siteConfig.name} 
+                            className="h-10 md:h-12 w-auto transition-all duration-300" 
+                        />
                     </Link>
                 </div>
 
@@ -46,7 +65,14 @@ const Navbar = () => {
                             (item.label === "Services" && location.pathname.startsWith("/services/")) ||
                             (item.label === "Industries" && location.pathname.startsWith("/industries/"));
 
-                        const className = `flex items-center gap-1 text-sm font-bold px-4 py-2.5 rounded-md transition-all duration-300 ${isActive ? 'bg-blue-600 text-white' : 'text-slate-700 hover:bg-blue-600 hover:text-white'}`;
+                        const textClass = isTransparent 
+                            ? 'text-white/95 hover:bg-white/10' 
+                            : 'text-slate-700 hover:bg-blue-600 hover:text-white';
+                        const activeClass = isTransparent 
+                            ? 'bg-white/20 text-white backdrop-blur-sm' 
+                            : 'bg-blue-600 text-white';
+
+                        const className = `flex items-center gap-1 text-sm font-bold px-4 py-2 rounded-md transition-all duration-300 ${isActive ? activeClass : textClass}`;
 
                         const linkContent = (
                             <>
@@ -67,12 +93,7 @@ const Navbar = () => {
                                 onMouseLeave={() => setDesktopDropdownOpen(null)}
                             >
                                 {isExternal ? (
-                                    <a
-                                        href={item.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={className}
-                                    >
+                                    <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
                                         {linkContent}
                                     </a>
                                 ) : (
@@ -127,7 +148,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden p-2 text-slate-700 hover:text-blue-600 transition-colors"
+                    className={`md:hidden p-2 transition-colors ${isTransparent ? 'text-white hover:text-white/80' : 'text-slate-700 hover:text-blue-600'}`}
                     onClick={toggleMobileMenu}
                 >
                     {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
