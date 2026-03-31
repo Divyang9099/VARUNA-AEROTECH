@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FileText, Cloud, Compass, MessageSquare, Thermometer, Camera, Layers } from 'lucide-react';
@@ -6,7 +6,7 @@ import { siteConfig } from '../siteConfig';
 
 const heroSlides = [{
     id: 1,
-    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937095/varuna-aerotech/videos/solar.mp4",
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/f_auto,q_auto/v1774937095/varuna-aerotech/videos/solar.mp4",
     position: "bottom-left",
     content: {
         mainTitle: siteConfig.hero.title,
@@ -20,7 +20,7 @@ const heroSlides = [{
 },
 {
     id: 2,
-    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937116/varuna-aerotech/videos/windmill.mp4",
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/f_auto,q_auto/v1774937116/varuna-aerotech/videos/windmill.mp4",
     position: "bottom-left",
     content: {
         mainTitle: "Renewable Energy",
@@ -34,7 +34,7 @@ const heroSlides = [{
 },
 {
     id: 3,
-    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937150/varuna-aerotech/videos/powerline.mp4",
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/f_auto,q_auto/v1774937150/varuna-aerotech/videos/powerline.mp4",
     position: "bottom-left",
     content: {
         mainTitle: "Power Sector",
@@ -47,7 +47,7 @@ const heroSlides = [{
 },
 {
     id: 4,
-    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937177/varuna-aerotech/videos/industrial.mp4",
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/f_auto,q_auto/v1774937177/varuna-aerotech/videos/industrial.mp4",
     position: "top-left",
     variant: "minimal",
     content: {
@@ -62,7 +62,7 @@ const heroSlides = [{
 },
 {
     id: 5,
-    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/v1774937230/varuna-aerotech/videos/topology.mp4",
+    video: "https://res.cloudinary.com/dhowmzdkh/video/upload/f_auto,q_auto/v1774937230/varuna-aerotech/videos/topology.mp4",
     position: "bottom-right",
     variant: "minimal",
     content: {
@@ -78,13 +78,35 @@ const heroSlides = [{
 
 const Hero = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const videoRefs = useRef([]);
 
     useEffect(() => {
+        // Clever bandwidth management: Only run the active cinematic clip
+        videoRefs.current.forEach((video, index) => {
+            if (video) {
+                if (index === currentSlide) {
+                    video.currentTime = 0; // Perfectly restart incoming clip at exactly 0.0s
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(() => {}); // Gracefully handle playback interruptions
+                    }
+                } else {
+                    // Wait for the precise 1s CSS crossfade to finish before pausing the outgoing clip
+                    setTimeout(() => {
+                        if (videoRefs.current[index]) {
+                            videoRefs.current[index].pause();
+                        }
+                    }, 1000);
+                }
+            }
+        });
+
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-        }, 5000); // 5 seconds interval
+        }, 8000); // Restart counting 8000ms strictly from the exact moment of playback
+        
         return () => clearInterval(timer);
-    }, []);
+    }, [currentSlide]);
     
     // Unified clear font style over all backgrounds (matches slide 1)
     const titleColor = "text-white";
@@ -122,10 +144,11 @@ const Hero = () => {
                 {heroSlides.map((slide, index) => (
                     <video
                         key={slide.id}
-                        autoPlay
+                        ref={(el) => (videoRefs.current[index] = el)}
                         loop
                         muted
                         playsInline
+                        preload={index === 0 ? "auto" : "metadata"}
                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
                     >
                         <source src={slide.video} type="video/mp4" />
@@ -140,13 +163,13 @@ const Hero = () => {
             {/* Dynamic Content Wrapper */}
             <div className="absolute inset-0 z-10 w-full pointer-events-none">
                 <div className="relative w-full h-full max-w-7xl mx-auto">
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence>
                         <motion.div
                             key={currentSlide}
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -15 }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            transition={{ duration: 0.8, ease: "easeInOut" }}
                             className={`absolute max-w-2xl pointer-events-auto flex flex-col transition-all duration-700 ${getPosClasses(pos)}`}
                         >
                             <h1 className={`${titleSize} mb-3 sm:mb-5 drop-shadow-xl ${titleColor} transition-all duration-700`} style={{ textShadow: titleShadow }}>
